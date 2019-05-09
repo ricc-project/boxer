@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  ricc-app:
+    container_name: ricc-app
+    build: .
+    command: ng serve --host 0.0.0.0
+    working_dir: /ricc-project/ricc-app
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/ricc-project

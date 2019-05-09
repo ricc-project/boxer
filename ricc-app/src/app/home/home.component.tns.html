@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<ActionBar [title]="title"></ActionBar>
+<StackLayout  class="p-20">
+    <Label text="I'm {{ title }}!" class="h1 text-center" textWrap="true"></Label>
+
+    <Image src="https://cdn-images-1.medium.com/max/2600/1*xLzU-XdztMW4oFnqj03eRA.png"
+           stretch="none" 
+           class="img-rounded p-l-15 p-r-15 p-t-15"></Image>
+
+    <TextField #inputText
+               hint="Enter your name" 
+               autocorrect="false"
+               returnKeyType="done"
+               (returnPress)="sayMyName(inputText.text)"
+               class="input input-border"></TextField>
+
+    <Button text="Submit" (tap)="sayMyName(inputText.text)"></Button>
+
+    <Label class="h3 text-center" 
+           [text]="outputText" textWrap="true" 
+           marginBottom="25"></Label>
+
+
+</StackLayout>
