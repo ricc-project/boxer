@@ -3,10 +3,17 @@ version: '3'
 services:
   ricc-app:
     container_name: ricc-app
-    build: .
+    build: ./docker
     command: ng serve --host 0.0.0.0
+    privileged: true
     working_dir: /ricc-project/ricc-app
     ports:
       - 4200:4200
+      - 5037:5037
     volumes:
       - .:/ricc-project
+      - /home/hugo/Android/Sdk:/android_sdk
+      - /dev/bus/usb:/dev/bus/usb
+      - /etc/udev/rules.d:/etc/udev/rules.d
+    env_file:
+      - ./docker/android_sdk.env
