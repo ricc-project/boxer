@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavbarComponent } from './utils/navbar/navbar.component';
-import { FooterComponent } from './utils/footer/footer.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -21,7 +20,6 @@ import { FooterComponent } from './utils/footer/footer.component';
     HomeComponent,
     LandingPageComponent,
     NavbarComponent,
-    FooterComponent,
   ],
   imports: [
     NativeScriptModule,

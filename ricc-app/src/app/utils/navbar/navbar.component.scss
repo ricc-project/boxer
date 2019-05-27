@@ -3,8 +3,37 @@
 body {
     background-color: transparent;
     color: white;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 a {
     color: white;
+}
+
+#logo {
+    width: 50%;
+    height: auto;
+}
+
+.navbar-toggler-icon i {
+    font-size: 1.3em;
+    color: white;
+}
+
+.navbar-collapse {
+    font-size: 1.2em;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 3%;
+    margin-right: 3%;    
+}
+
+.navbar-brand {
+    display: block;
+    margin-left: 3%;
+}
+
+.nav-item .active{
+    font-weight: bold;
 }

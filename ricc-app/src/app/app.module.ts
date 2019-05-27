@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavbarComponent } from './utils/navbar/navbar.component';
-import { FooterComponent } from './utils/footer/footer.component';
 
 
 @NgModule({
@@ -15,7 +14,6 @@ import { FooterComponent } from './utils/footer/footer.component';
     HomeComponent,
     LandingPageComponent,
     NavbarComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,

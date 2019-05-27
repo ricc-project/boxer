@@ -1,7 +1,9 @@
-$primary-color: red;
 $primary-font: lato;
+
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 body {
     font-family: $primary-font;
-    background-color: blue;
 }
