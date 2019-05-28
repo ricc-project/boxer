@@ -1,0 +1,13 @@
+@import '../../app.component.scss';
+
+.container {
+    margin-top: 4%;
+}
+
+#signup-link, #forgot-password-link{
+    font-weight: bold;
+}
+
+#signup-link:hover, #forgot-password-link:hover {
+    font-weight: normal;
+}

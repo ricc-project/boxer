@@ -8,6 +8,7 @@ import { LandingPageComponent } from './ricc-join/landing-page/landing-page.comp
 import { NavbarComponent } from './utils/navbar/navbar.component';
 import { SignUpComponent } from './ricc-join/sign-up/sign-up.component';
 import { ProfileComponent } from './ricc-dashboard/profile/profile.component';
+import { LoginComponent } from './ricc-join/login/login.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -24,6 +25,7 @@ import { ProfileComponent } from './ricc-dashboard/profile/profile.component';
     NavbarComponent,
     SignUpComponent,
     ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     NativeScriptModule,
