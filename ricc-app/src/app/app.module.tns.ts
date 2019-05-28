@@ -9,6 +9,9 @@ import { NavbarComponent } from './utils/navbar/navbar.component';
 import { SignUpComponent } from './ricc-join/sign-up/sign-up.component';
 import { ProfileComponent } from './ricc-dashboard/profile/profile.component';
 import { LoginComponent } from './ricc-join/login/login.component';
+import { AboutUsComponent } from './ricc-join/about-us/about-us.component';
+import { ForgotPasswordComponent } from './ricc-join/forgot-password/forgot-password.component';
+import { SeeMoreComponent } from './ricc-join/see-more/see-more.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -26,6 +29,9 @@ import { LoginComponent } from './ricc-join/login/login.component';
     SignUpComponent,
     ProfileComponent,
     LoginComponent,
+    AboutUsComponent,
+    ForgotPasswordComponent,
+    SeeMoreComponent,
   ],
   imports: [
     NativeScriptModule,

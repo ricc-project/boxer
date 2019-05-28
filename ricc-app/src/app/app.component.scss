@@ -1,5 +1,6 @@
 $primary-font: lato;
 $green-color: #B2B934;
+$primary-font-color: #47525E;
 
 ::-webkit-scrollbar { 
     display: none; 
@@ -7,6 +8,7 @@ $green-color: #B2B934;
 
 body {
     font-family: $primary-font;
+    color: $primary-font-color;
 }
 
 

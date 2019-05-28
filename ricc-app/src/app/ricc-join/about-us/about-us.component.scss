@@ -1,0 +1,20 @@
+@import '../../app.component.scss';
+
+.container {
+    margin-top: 4%;
+}
+
+.description {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.content img {
+    max-width: auto;
+    max-height: 300px;
+    margin-bottom: 6%;
+}
+
+.description-text{
+    font-size: 1.3em;
+}
