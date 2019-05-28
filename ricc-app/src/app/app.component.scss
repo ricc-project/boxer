@@ -9,6 +9,8 @@ $primary-font-color: #47525E;
 body {
     font-family: $primary-font;
     color: $primary-font-color;
+    -ms-overflow-style: none;  // IE 10+
+    scrollbar-width: none;  // Firefox
 }
 
 
