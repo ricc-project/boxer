@@ -1,0 +1,13 @@
+@import '../../app.component.scss';
+
+.container {
+    margin-top: 4%;
+}
+
+#login-link {
+    font-weight: bold;
+}
+
+#login-link:hover {
+    font-weight: normal;
+}

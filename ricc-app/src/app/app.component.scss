@@ -1,4 +1,5 @@
 $primary-font: lato;
+$green-color: #B2B934;
 
 ::-webkit-scrollbar { 
     display: none; 
@@ -6,4 +7,39 @@ $primary-font: lato;
 
 body {
     font-family: $primary-font;
+}
+
+
+button {
+    margin: 20px;
+    background-color: rgba(66, 53, 43, 1);
+    border-color:white;
+    border-style: solid;
+    border-radius: 100px;
+    color: white;
+    font-size: 1.3em;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+form {
+    display: inline-block;
+}
+
+input[type=text] {
+    display: block;
+    margin: 15px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+a {
+    color: $green-color;
+}
+
+a:hover {
+    color: $green-color;
+    font-weight: normal;
 }

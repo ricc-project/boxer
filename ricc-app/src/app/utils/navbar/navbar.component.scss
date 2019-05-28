@@ -1,19 +1,17 @@
 @import '../../app.component';
 
+
 body {
     background-color: transparent;
-    color: white;
     margin-top: 10px;
     margin-bottom: 20px;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
-a {
-    color: white;
-}
-
-#logo {
-    width: 50%;
-    height: auto;
+button {
+    border: transparent;
+    background-color: transparent;
 }
 
 .navbar-toggler-icon i {
@@ -25,15 +23,51 @@ a {
     font-size: 1.2em;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 3%;
-    margin-right: 3%;    
+    
 }
 
 .navbar-brand {
     display: block;
-    margin-left: 3%;
 }
 
 .nav-item .active{
     font-weight: bold;
+    color: $green-color;
 }
+
+#logo {
+    width: 50%;
+    height: auto;
+}
+
+// LIGHT THEME
+.light .navbar-brand #logo{
+    content: url('../../../assets/imgs/leaf_light.png');
+}
+
+.light a {
+    color: white;
+}
+
+// DARK THEME
+.dark-green {
+    border-bottom: 2px groove;
+    border-bottom-color: rgba(170, 152, 140, 0.6);
+}
+
+.dark-green a {
+    color:#5D5650;
+}
+
+.dark-green .navbar-brand #logo{
+    content: url('../../../assets/imgs/leaf_dark-green.png');
+}
+
+.dark-green .navbar-brand #text {
+    color: $green-color;
+}
+
+.dark-green .navbar-toggler-icon i {
+    color: $green-color;
+}
+

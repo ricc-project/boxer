@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ricc-navbar',
@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input('theme') theme: string;   
+  currentURL = '';
 
-  constructor() { }
+  constructor() {
+    this.currentURL = window.location.href;
+  }
 
   ngOnInit() {
   }

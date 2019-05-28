@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { LandingPageComponent} from './landing-page/landing-page.component'
-import { HomeComponent } from './home/home.component';
+import { LandingPageComponent} from './ricc-join/landing-page/landing-page.component'
+import { SignUpComponent } from './ricc-join/sign-up/sign-up.component'
+
+import { HomeComponent } from './ricc-dashboard/home/home.component';
 
 export const routes: Routes = [
   {
@@ -12,4 +14,8 @@ export const routes: Routes = [
       path: 'home',
       component: HomeComponent,
   },
+  {
+    path: 'signup',
+    component: SignUpComponent,
+},
 ];
