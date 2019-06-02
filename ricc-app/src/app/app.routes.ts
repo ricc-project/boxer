@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './ricc-join/forgot-password/forgot-pass
 import { SeeMoreComponent } from './ricc-join/see-more/see-more.component'
 
 import { HomeComponent } from './ricc-dashboard/home/home.component';
+import { ProfileComponent } from './ricc-dashboard/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -38,4 +39,9 @@ export const routes: Routes = [
     path: 'seemore',
     component: SeeMoreComponent,
   },      
+  {
+    path: 'profile/user',
+    component: ProfileComponent,
+  },
+
 ];

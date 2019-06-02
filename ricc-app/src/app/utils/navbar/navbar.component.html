@@ -47,34 +47,63 @@
           <a class="nav-link" routerLink="/home" [routerLinkActive]="['active']">
             <i class="text-center fas fa-chart-bar"></i>
             <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">Dashboard</span>
+            <i class="text-right fas fa-chevron-right arrow"></i>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/profile" [routerLinkActive]="['active']" data-toggle="collapse" data-target="#profile-options" aria-expanded="true" aria-controls="profileOptions">
             <i class="text-center fas fa-user"></i>
-            <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">Profile</span>
+            <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">Profile</span>     
+            <i class=" text-right fas fa-chevron-down arrow"></i>
           </a>
+            
+          <div *ngIf="sidebarStatus == 'sidebar-open'" routerLink="/profile" [routerLinkActive]="['show']" id="profile-options" class="text-right collapse options" aria-labelledby="profileOptions">              
+            <a class="nav-link item-options" routerLink="/profile/user" [routerLinkActive]="['active']">
+              <span class="text">Meu perfil</span>
+            </a>
+            
+            <a class="nav-link item-options" routerLink="/profile/settings" [routerLinkActive]="['active']">
+              <span class="text">Configurações</span>
+            </a>
+          </div>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/riccs" [routerLinkActive]="['active']" data-toggle="collapse" data-target="#ricc-options" aria-expanded="true" aria-controls="riccOptions">
             <i class="text-center fas fa-project-diagram"></i>
             <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">RICCs</span>
+            <i class=" text-right fas fa-chevron-down arrow"></i>       
           </a>
+            
+          <div *ngIf="sidebarStatus == 'sidebar-open'" routerLink="/riccs" [routerLinkActive]="['active','show']" id="ricc-options" class="text-right collapse options" aria-labelledby="profileOptions">              
+            <a class="nav-link item-options" routerLink="/riccs/centrals" [routerLinkActive]="['active']">
+              <span class="text">Centrais</span>
+            </a>
+            
+            <a class="nav-link item-options" routerLink="/riccs/stations" [routerLinkActive]="['active']">
+              <span class="text">Estações</span>
+            </a>
+
+            <a class="nav-link item-options" routerLink="/riccs/actuators" [routerLinkActive]="['active']">
+              <span class="text">Atuadores</span>
+            </a>
+          </div>
         </li>
   
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/users" [routerLinkActive]="['active']">
             <i class="text-center fas fa-users"></i>
             <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">Participantes</span>
+            <i class=" text-right fas fa-chevron-right arrow"></i>
           </a>
         </li>
   
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/contactus" [routerLinkActive]="['active']">
             <i class="text-center fas fa-phone-volume"></i>
-            <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">Contate-nos</span>
+            <span *ngIf="sidebarStatus == 'sidebar-open'" class="text">Contate-nos</span>
+            <i class=" text-right fas fa-chevron-right arrow"></i>
           </a>
         </li>
       </ul>

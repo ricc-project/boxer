@@ -118,7 +118,8 @@ button {
 .light-dark .nav-item {
     border-bottom: 2px groove;
     border-bottom-color: rgba(170, 152, 140, 0.6);
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .light-dark .nav-link {
@@ -126,20 +127,56 @@ button {
     overflow: hidden;
 }
 
+.light-dark .nav-link:hover {
+    cursor: pointer;
+}
 
 .light-dark .nav-item a{
-    margin-left: 5%;
     margin-right: 5%;
 }
 
+.light-dark .nav-item .item-options{
+    margin: 0;
+    padding-right: 20px;
+}
+
 .light-dark .navbar-nav i{
-    min-width: 30%;
+    color: $green-color;
+    width: 30%;
+    max-width: 30%;
 }
 
 .light-dark .navbar-nav span{
+    display: inline-block;
     margin: 0;
-    min-width: 50%;
+    width: 50%;
+    max-width: 50%;
 }
+
+.light-dark .navbar-nav .arrow{
+    color: white;
+    font-size: 0.9em;
+    margin-right: 0;
+    width: 20%;
+    max-width: 20%;
+    align-content: flex-end;
+}
+
+
+.light-dark .options {
+    background-color: #5D544D;
+}
+
+.light-dark .options a{
+    border-bottom: 2px groove;
+    border-bottom-color: rgba(170, 152, 140, 0.6);
+}
+
+.light-dark .active{
+    border-left: 5px solid;
+    border-bottom-color: $green-color;
+}
+
 
 // Sidebar open
 .sidebar-open {
@@ -159,9 +196,7 @@ button {
 }
 
 .sidebar-open .text{
-    margin-left: 10px;
     font-size: 1em;
-    overflow: hidden;
     color: white;
     font-weight: normal;
 }
@@ -196,4 +231,8 @@ button {
 
 .sidebar-partial .navbar-nav {
     text-align: center;
+}
+
+.sidebar-partial .arrow{
+visibility: hidden;
 }
