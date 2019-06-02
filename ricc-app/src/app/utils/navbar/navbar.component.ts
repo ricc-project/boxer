@@ -7,13 +7,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   @Input('theme') theme: string;   
-  currentURL = '';
+  @Input('isLoggedIn') isLoggedIn: boolean;
+  sidebarStatus: string;
 
   constructor() {
-    this.currentURL = window.location.href;
+    this.sidebarStatus = "sidebar-open";
   }
 
   ngOnInit() {
   }
+
+  changeSidebar(){
+    console.log(this.sidebarStatus);
+    
+    if (this.sidebarStatus == "sidebar-partial") {
+      this.sidebarStatus = "sidebar-open";
+    } else{
+      this.sidebarStatus = "sidebar-partial";  
+    }
+  }
+
 
 }

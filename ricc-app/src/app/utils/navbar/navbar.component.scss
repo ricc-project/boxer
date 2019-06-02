@@ -3,15 +3,12 @@
 
 body {
     background-color: transparent;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 3%;
-    margin-right: 3%;
 }
 
 button {
-    border: transparent;
     background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .navbar-toggler-icon i {
@@ -35,12 +32,22 @@ button {
     color: $green-color;
 }
 
+.navbar-nav {
+    margin: 10px;
+}
+
 #logo {
     width: 50%;
     height: auto;
 }
 
 // LIGHT THEME
+.light {
+    margin-bottom: 20px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
+}
 .light .navbar-brand #logo{
     content: url('../../../assets/imgs/leaf_light.png');
 }
@@ -51,6 +58,10 @@ button {
 
 // DARK THEME
 .dark-green {
+    margin-bottom: 20px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10px;
     border-bottom: 2px groove;
     border-bottom-color: rgba(170, 152, 140, 0.6);
 }
@@ -71,3 +82,118 @@ button {
     color: $green-color;
 }
 
+
+// LIGHT DARK THEME
+.light-dark {
+    color: white;
+    width: fit-content;
+    background-color: #49423D;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+}
+
+.light-dark a {
+    color: white;
+}
+.light-dark .navbar {
+    padding: 0;
+}
+
+.light-dark .navbar-brand {   
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px groove;
+    border-bottom-color: rgba(170, 152, 140, 0.6);
+    width: 100%;
+}
+
+.light-dark .navbar-nav {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.light-dark .nav-item {
+    border-bottom: 2px groove;
+    border-bottom-color: rgba(170, 152, 140, 0.6);
+    padding: 20px;
+}
+
+.light-dark .nav-link {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.light-dark .nav-item a{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.light-dark .navbar-nav i{
+    min-width: 30%;
+}
+
+.light-dark .navbar-nav span{
+    margin: 0;
+    min-width: 50%;
+}
+
+// Sidebar open
+.sidebar-open {
+    width: 200px;
+    min-height: 100vh;
+    height: 100%;
+    transition: width .4s linear;
+    overflow: hidden;
+}
+
+.sidebar-open #logo{
+    width: 70%;
+}
+
+.sidebar-open .title-text{
+    overflow: hidden;
+}
+
+.sidebar-open .text{
+    margin-left: 10px;
+    font-size: 1em;
+    overflow: hidden;
+    color: white;
+    font-weight: normal;
+}
+
+.sidebar-open i{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+// Sidebar partial
+.sidebar-partial {
+    min-height: 100vh;
+    height: 100%;
+    width: 80px;
+    transition: width .4s linear;
+    font-size: 1.4em;
+
+}
+
+.sidebar-partial .text{
+    visibility: hidden;    
+}
+
+.sidebar-partial #logo{
+    width: 100%;
+}
+
+.sidebar-partial .navbar-brand button{
+    margin: 0;
+    padding: 10px;
+}
+
+.sidebar-partial .navbar-nav {
+    text-align: center;
+}
