@@ -76,7 +76,7 @@
             <i class=" text-right fas fa-chevron-down arrow"></i>       
           </a>
             
-          <div *ngIf="sidebarStatus == 'sidebar-open'" routerLink="/riccs" [routerLinkActive]="['active','show']" id="ricc-options" class="text-right collapse options" aria-labelledby="profileOptions">              
+          <div *ngIf="sidebarStatus == 'sidebar-open'" routerLink="/riccs" [routerLinkActive]="['show']" id="ricc-options" class="text-right collapse options" aria-labelledby="profileOptions">              
             <a class="nav-link item-options" routerLink="/riccs/centrals" [routerLinkActive]="['active']">
               <span class="text">Centrais</span>
             </a>
@@ -90,15 +90,7 @@
             </a>
           </div>
         </li>
-  
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/users" [routerLinkActive]="['active']">
-            <i class="text-center fas fa-users"></i>
-            <span  *ngIf="sidebarStatus == 'sidebar-open'" class="text">Participantes</span>
-            <i class=" text-right fas fa-chevron-right arrow"></i>
-          </a>
-        </li>
-  
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/contactus" [routerLinkActive]="['active']">
             <i class="text-center fas fa-phone-volume"></i>

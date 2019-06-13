@@ -12,6 +12,12 @@ import { LoginComponent } from './ricc-join/login/login.component';
 import { AboutUsComponent } from './ricc-join/about-us/about-us.component';
 import { ForgotPasswordComponent } from './ricc-join/forgot-password/forgot-password.component';
 import { SeeMoreComponent } from './ricc-join/see-more/see-more.component';
+import { ContactUsComponent } from './ricc-dashboard/contact-us/contact-us.component';
+import { UserSettingsComponent } from './ricc-dashboard/user-settings/user-settings.component';
+import { CentralsComponent } from './ricc-dashboard/centrals/centrals.component';
+import { StationsComponent } from './ricc-dashboard/stations/stations.component';
+import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
+import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
 
 
 @NgModule({
@@ -26,6 +32,12 @@ import { SeeMoreComponent } from './ricc-join/see-more/see-more.component';
     AboutUsComponent,
     ForgotPasswordComponent,
     SeeMoreComponent,
+    ContactUsComponent,
+    UserSettingsComponent,
+    CentralsComponent,
+    StationsComponent,
+    ActuatorsComponent,
+    UserGuestsComponent,
   ],
   imports: [
     BrowserModule,

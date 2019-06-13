@@ -9,15 +9,18 @@ import { SeeMoreComponent } from './ricc-join/see-more/see-more.component'
 
 import { HomeComponent } from './ricc-dashboard/home/home.component';
 import { ProfileComponent } from './ricc-dashboard/profile/profile.component';
+import { UserSettingsComponent } from './ricc-dashboard/user-settings/user-settings.component';
+import { CentralsComponent } from './ricc-dashboard/centrals/centrals.component';
+import { StationsComponent } from './ricc-dashboard/stations/stations.component';
+import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
+import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
+import { ContactUsComponent } from './ricc-dashboard/contact-us/contact-us.component';
+
 
 export const routes: Routes = [
   {
       path: '',
       component: LandingPageComponent,
-  },
-  {
-      path: 'home',
-      component: HomeComponent,
   },
   {
     path: 'signup',
@@ -38,10 +41,38 @@ export const routes: Routes = [
   {
     path: 'seemore',
     component: SeeMoreComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
   },      
   {
     path: 'profile/user',
     component: ProfileComponent,
+  },
+  {
+    path: 'profile/settings',
+    component: UserSettingsComponent,
+  },
+  {
+    path: 'riccs/centrals',
+    component: CentralsComponent,
+  },
+  {
+    path: 'riccs/stations',
+    component: StationsComponent,
+  },
+  {
+    path: 'riccs/actuators',
+    component: ActuatorsComponent,
+  },
+  {
+    path: 'user/guests',
+    component: UserGuestsComponent,
+  },
+  {
+    path: 'contactus',
+    component: ContactUsComponent,
   },
 
 ];

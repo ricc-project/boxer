@@ -18,8 +18,6 @@ export class NavbarComponent implements OnInit {
   }
 
   changeSidebar(){
-    console.log(this.sidebarStatus);
-    
     if (this.sidebarStatus == "sidebar-partial") {
       this.sidebarStatus = "sidebar-open";
     } else{

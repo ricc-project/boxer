@@ -1,0 +1,58 @@
+<body>
+  <div class="d-flex">  
+    <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
+
+    <div class="container text-center">
+
+      <div class="card">
+        <div class="card-header centrals-top d-flex align-items-center justify-content-between">
+          <div>
+            <span id="centrals-title">Central {{ id }}</span> 
+            <i *ngIf="status == 'up'" class="text-success fas fa-circle"></i>
+            <i *ngIf="status == 'down'" class="text-danger fas fa-circle"></i>
+            <i *ngIf="status == 'warning'" class="text-warning fas fa-circle"></i>
+          </div>
+
+          <a href="#" class="text-right" id="edit-central">
+            <i class="text-right fas fa-pen" id="edit-icon"></i>
+          </a>
+        </div>
+
+        <div class="card-body row centrals-content">
+          <div class="col border-right">
+            <span id="option-icon"><i class="fas fa-broadcast-tower"></i></span>
+            <p id="number">{{ stations ? stations.length : '0' }}</p>
+            <p>Estações</p>
+          </div>
+
+          <div class="col border-right">
+            <span id="option-icon"><i class="fas fa-shower"></i></span>
+            <p id="number">{{ actuators ? actuators.length : '0' }}</p>
+            <p>Atuadores</p>
+          </div>
+
+          <div class="col">
+            <span>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
+            </span>
+            <p>Irrigação automática</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="add-more text-left">
+        <a href="#">
+            <i class="fas fa-plus"></i>
+            Adicionar nova central
+        </a>
+      </div> 
+
+    </div>
+  </div>
+
+</body>
+    
