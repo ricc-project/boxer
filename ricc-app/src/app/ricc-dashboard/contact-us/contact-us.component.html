@@ -1,0 +1,78 @@
+<body>
+  <div class="d-flex">  
+    <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
+
+    <div class="container text-center">
+      <h1 id="page-title">Precisa de ajuda?</h1>
+
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header text-left" id="docs-header">
+            <button class="btn-link text-left align-content-center" data-toggle="collapse" data-target="#docs">
+              <span id="title">
+                <i class="far fa-file-alt"></i>
+                DOCUMENTAÇÃO
+              </span>
+
+              <p id="description">Confira documentação para te ajudar na instalação e manutenção da sua rede</p>
+            </button>
+          </div>
+      
+          <div id="docs" class="collapse" aria-labelledby="docs" data-parent="#accordion">
+            <div class="card-body">
+              Para melhor suporte fornecemos documentação técnica dos nossos produtos.
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header text-left" id="faq-header">
+            <button class="btn-link text-left" data-toggle="collapse" data-target="#faq">
+              <span id="title">
+                <i class="fas fa-question"></i>
+                FAQs
+              </span>
+              <p id="description">Sua dúvida pode já ter sido respondida, confira e veja se ela se enquadra</p>
+              </button>
+            </div>
+
+            <div id="faq" class="collapse" aria-labelledby="faq" data-parent="#accordion">
+              <div class="card-body">
+                <ul class="text-justify">
+                  <li><p>Minha rede RICC está com os dados desatualizados?</p>
+                      <p>Primeiro certifique que sua central está conectada na rede, isso é possivel observando os leds.</p>
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+          <div class="card-header text-left" id="mail-header">
+            <button class="btn-link text-left" data-toggle="collapse" data-target="#mail">
+              <span id="title">
+                <i class="far fa-envelope"></i>
+                MAIS DÚVIDAS?
+              </span>
+              <p id="description">Nossa equipe está disponpivel para atender e solucionar sua pergunta</p>
+            </button>
+          </div>
+          
+          <div id="mail" class="collapse" aria-labelledby="mail" data-parent="#accordion">
+            <div class="card-body">
+              Envie um e-mail para suporte@ricc.com e teremos prazer em atender você.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+    
