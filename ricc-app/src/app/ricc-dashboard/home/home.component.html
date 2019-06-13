@@ -3,9 +3,35 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-      DashBoard<br>
-      ULTIMO aaaaaaa
+      <div *ngIf="!setup" class="content">
+        <h1>Seja bem-vindo</h1>
 
+        <p>Proceda com a instalação e configuração da sua rede.</p>
+        <p>Após, sinta-se livre para customizar seu painel principal com os widgets que achar necessário</p>
+
+        <div class="row">
+          <div class="col setup-option">
+            <a href="#">
+              <i class="fas fa-cogs" id="setup-icon"></i>
+              <p>Começar configuração</p>
+            </a>
+          </div>
+
+          <div class="col setup-option">
+            <a href="#">
+              <i class="fas fa-plus" id="setup-icon"></i>
+              <p>Adicionar widgets</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="setup" class="content">
+        <h1>Seja bem-vindo</h1>
+  
+        <p>Esses são seus últimos dados</p>
+      </div>
     </div>
 
   </div>
