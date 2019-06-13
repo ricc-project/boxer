@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stations.component.scss']
 })
 export class StationsComponent implements OnInit {
+  id: number;
+  status: string;
 
-  constructor() { }
+  constructor() { 
+    this.id = 0;
+    this.status = "up";
+  }
 
   ngOnInit() {
   }

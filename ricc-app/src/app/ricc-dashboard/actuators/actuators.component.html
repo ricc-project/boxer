@@ -1,14 +1,65 @@
 <body>
-  <div class="d-flex">  
-    <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
+    <div class="d-flex">  
+      <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
+  
+      <div class="container text-center">
+        <h1 id="page-title">Seus atuadores</h1>
+  
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="docs-header">
+              <button class="btn-link text-left align-content-center" data-toggle="collapse" data-target="#docs">
+                <div>
+                  <span id="title">
+                    <i class="fas fa-shower"></i>
+                    Atuador {{  id }}
 
-    <div class="container text-center">
-      Actuator<br>
-      ULTIMO aaaaaaa
+                    <i *ngIf="status == 'up'" class="text-success fas fa-circle"></i>
+                    <i *ngIf="status == 'down'" class="text-danger fas fa-circle"></i>
+                    <i *ngIf="status == 'warning'" class="text-warning fas fa-circle"></i>
+            
+                  </span>
+                </div>
 
+                <div class="d-flex justify-content-between">
+                  <span id="description">Última atualização: 22:09</span>
+                  <span class="text-right"><i class="fas fa-eye"></i></span>
+                </div>
+                </button>
+            </div>
+        
+            <div id="docs" class="collapse" aria-labelledby="docs" data-parent="#accordion">
+              <div class="card-body">
+                <table class="table table-sm table-bordered table-hover">
+                  <tbody>
+                    <tr>
+                      <td>Último uso</td>
+                      <td>23 horas atrás</td>
+                    </tr>
+
+                    <tr>
+                      <td>Modelo</td>
+                      <td>Pivô central</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+
+        <div class="add-more text-left">
+          <a href="#">
+              <i class="fas fa-plus"></i>
+              Adicionar novo atuador
+          </a>
+        </div> 
+
+      </div>
+  
     </div>
-
-  </div>
-
-</body>
-    
+  
+  </body>
+      

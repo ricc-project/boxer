@@ -47,3 +47,21 @@ a:hover {
     color: $green-color;
     font-weight: normal;
 }
+
+.add-more {
+    font-size: 1.2em;
+    margin-top: 30px;
+}
+
+.add-more a{
+    color: $primary-font-color;
+}
+
+.add-more i{
+    color: $green-color;
+}
+
+.fa-circle {
+    margin-left: 10px;
+    font-size: 0.4em !important;
+}
