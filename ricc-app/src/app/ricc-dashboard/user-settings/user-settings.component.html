@@ -3,8 +3,32 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-      Settings<br>
-      ULTIMO aaaaaaa
+      <div class="row content">
+        <div class="col border-right">
+          <h3>Redefinir senha</h3>
+          <form>
+            <input type="text" placeholder="Senha atual"/>
+            <input type="text" placeholder="Nova senha"/>
+            <input type="text" placeholder="Repita a nova senha"/>
+
+            <button>Atualizar</button>  
+          </form>  
+        </div>
+
+        <div class="col">
+          <h3>Notificações</h3>
+          <p>Ativar sistema de Notificações</p>
+
+          <span>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider round"></span>
+            </label>
+          </span>
+        </div>
+
+      </div>
+
 
     </div>
 

@@ -3,8 +3,25 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-      Profile<br>
-      Sua profile
+      <div class="content">
+        <h1>Suas informações</h1>
+
+        <form>
+          <input type="text" placeholder="Nome"/>
+          <input type="text" placeholder="E-mail"/>
+          <input type="text" placeholder="Seu código RICC"/>
+
+          <button>Atualizar</button>  
+        </form>
+        
+        <hr>
+
+        <span>
+          Não desejo mais utilizar os serviços da RICC. Quero
+          <a class="text-danger" href="/delete" id="delete-account">apagar minha conta</a>
+        </span>
+        
+      </div>
     </div>
   </div>
 </body>
