@@ -9,16 +9,10 @@ import { Image } from "tns-core-modules/ui/image";
 export class HomeComponent implements OnInit {
   title = 'ricc-app';
   setup = false;
-  outputText = '';
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  public sayMyName(name) {    
-    this.outputText = "Seu nome é " + name;
-  }
-
 
 }
