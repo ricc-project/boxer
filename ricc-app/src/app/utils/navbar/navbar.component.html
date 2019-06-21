@@ -98,6 +98,13 @@
             <i class=" text-right fas fa-chevron-right arrow"></i>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">
+            <i class="text-center fas fa-sign-out-alt" id="logout-icon"></i>
+            <span *ngIf="sidebarStatus == 'sidebar-open'" class="text">Sair</span>
+          </a>
+        </li>
       </ul>
 
     </nav>
