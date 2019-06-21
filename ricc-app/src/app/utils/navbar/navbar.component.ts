@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.auth.token = "";
-    this.router.navigate(['/'])
+    this.router.navigate(['/login'])
   }
 
 

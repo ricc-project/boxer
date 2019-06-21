@@ -11,32 +11,37 @@ import { Router } from "@angular/router"
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  user:  User;
+  errors: string;
 
-  constructor(private http: HttpClient, private auth: Auth, private router: Router) { }
+  constructor(private http: HttpClient, private auth: Auth, private router: Router) { 
+    this.user = new User();
+    this.errors = "";
+  }
 
   ngOnInit() {
   }
 
   onSubmit(f: NgForm) {
-    let user = new User();
-    user.username = f.value.email;
-    user.password = f.value.password;
+    if (f.valid){
+      this.user.username = f.value.email;
+      this.user.password = f.value.password;
+  
+      this.http.post('http://localhost/login/', this.user)
+      .subscribe(
+        data => {          
+          this.auth.token = data['authentication_token'];
+          this.router.navigate(['/home'])
 
-    console.log(user);
-    
-
-    this.http.post('http://localhost/login/', user)
-    .subscribe(
-      data => {
-        console.log("data", data);
-        console.log("passed here");
-        
-      },
-      err => {
-        console.log("error", err);
-        console.log("passed");
-        
-      }
-    );
+        }, 
+        err => {
+          if (err.error.message == "Invalid login information.") {
+            this.errors = "As credenciais informadas não são válidas";            
+          } else {
+            this.errors = "Um erro inesperado aconteceu";
+          }
+        }
+      );      
+    }
   }
 }
