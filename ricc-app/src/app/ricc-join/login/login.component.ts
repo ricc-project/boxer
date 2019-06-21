@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router"
 
 @Component({
@@ -13,18 +12,19 @@ import { Router } from "@angular/router"
 export class LoginComponent implements OnInit {
   user:  User;
   errors: string;
+  authToken: string;
 
-  constructor(private http: HttpClient, private auth: Auth, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router) { 
     this.user = new User();
     this.errors = "";
   }
 
   ngOnInit() {
-    if(this.auth.token){
-      this.router.navigate(['/home']);
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken == null){
+      this.router.navigate(['/login']);
     }
   }
-
   onSubmit(f: NgForm) {
     if (f.valid){
       this.user.username = f.value.email;
@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
       this.http.post('http://localhost/login/', this.user)
       .subscribe(
         data => {          
-          this.auth.token = data['authentication_token'];
+          let authToken = data['authentication_token'];
+          localStorage.setItem("authToken", JSON.stringify(authToken));
           this.router.navigate(['/home']);
 
         }, 

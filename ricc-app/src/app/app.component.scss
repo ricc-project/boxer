@@ -28,16 +28,22 @@ button {
     padding-bottom: 5px;
 }
 
-form {
-    display: inline-block;
+input {
+    padding: 10px;
+    display: block;
+    width: 65%;
+    font-size: 1.04em;
 }
 
-input {
-    display: block;
-    margin: 15px;
-    padding-left: 10px;
-    width: 100%;
+@media (max-width: 991.98px) { 
+    input {
+        display: block;
+        width: 100%;
+    }
 }
+
+
+
 
 a {
     color: $green-color;

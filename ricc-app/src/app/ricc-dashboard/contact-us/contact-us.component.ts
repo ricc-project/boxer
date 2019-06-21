@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,12 +7,14 @@ import { Router } from "@angular/router";
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
+  authToken: string;
 
-  constructor(private auth: Auth, private router: Router) { 
+  constructor(private router: Router) { 
   }
 
   ngOnInit() {
-    if(!this.auth.token){
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken == null){
       this.router.navigate(['/login']);
     }
   }

@@ -5,59 +5,59 @@
       <h2> Cadastre-se</h2>
       <h6>Crie sua conta e comece a otimizar sua produção</h6>
       
-      <div *ngIf="errors" class="alert alert-danger">
+      <div *ngIf="errors" class="text-danger">
         {{ errors }}
       </div>
 
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         
-        <span>
+        <div class="input text-left">
           <input name="email" type="text" id="email" placeholder="E-mail" 
             [(ngModel)]="user.email" #email="ngModel" pattern="^[^@]+@[^@]+\.[^@]+$" required/>
         
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-            <div *ngIf="email.errors.required">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required" class="text-danger">
               Email é um campo obrigatório.
             </div>
-            <div *ngIf="email.errors.pattern">
+            <div *ngIf="email.errors.pattern" class="text-danger">
               Favor inserir um email válido.
             </div>
           </div>
-        </span>
+        </div>
 
-        <span>
+        <div class="input text-left">
           <input name="ricc-code" type="text" id="ricc-code" placeholder="Seu código RICC" 
             [(ngModel)]="user.riccCode" #riccCode="ngModel" required/>
         
-          <div *ngIf="riccCode.invalid && (riccCode.dirty || riccCode.touched)" class="alert alert-danger">
-            <div *ngIf="riccCode.errors.required">
+          <div *ngIf="riccCode.invalid && (riccCode.dirty || riccCode.touched)">
+            <div *ngIf="riccCode.errors.required" class="text-danger">
               O código RICC é um campo obrigatório.
             </div>
           </div>
-        </span>
+        </div>
 
 
-        <span>
+        <div class="input text-left">
           <input name="password" type="password" id="password" placeholder="Sua senha" 
             [(ngModel)]="user.password" #password="ngModel" required/>
-        
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-            <div *ngIf="password.errors.required">
+
+          <span *ngIf="password.invalid && (password.dirty || password.touched)">
+            <span *ngIf="password.errors.required" class="text-danger">
               Sua senha é obrigatória.
-            </div>
-          </div>
-        </span>
+            </span>
+          </span>
+        </div>
 
         
-        <span>
+        <div class="input text-left">
           <input name="cPassword" type="password" id="cPassword" placeholder="Confirme sua senha" 
             [(ngModel)]="user.cPassword" #cPassword="ngModel" required/>
                     
-          <div *ngIf="(cPassword.value !== password.value) && (cPassword.dirty || cPassword.touched)" class="alert alert-danger">
+          <div *ngIf="(cPassword.value !== password.value) && (cPassword.dirty || cPassword.touched)" class="text-danger">
             As senhas não são iguais.
           </div>
 
-        </span>
+        </div>
 
         <button type="submit">Cadastre-se</button>
 

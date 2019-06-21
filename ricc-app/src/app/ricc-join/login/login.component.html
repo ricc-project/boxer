@@ -5,33 +5,33 @@
     <div class="container text-center">
       <h2> Entrar </h2>
 
-      <div *ngIf="errors" class="alert alert-danger">
+      <div *ngIf="errors" class="text-danger">
         {{ errors }}
       </div>
 
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         
-        <span>
+        <div class="input text-left">
           <input name="email" type="text" id="email" placeholder="E-mail" 
             [(ngModel)]="user.email" #email="ngModel" required/>
         
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-            <div *ngIf="email.errors.required">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required" class="text-danger">
               Email é um campo obrigatório.
             </div>
           </div>
-        </span> 
+        </div> 
 
-        <span>
+        <div class="input text-left">
           <input name="password" type="password" id="password" placeholder="Sua senha" 
             [(ngModel)]="user.password" #password="ngModel" required/>
         
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-            <div *ngIf="password.errors.required">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required" class="text-danger">
               Sua senha é obrigatória.
             </div>
           </div>
-        </span>
+        </div>
 
         <button type="submit">Entrar</button>
   

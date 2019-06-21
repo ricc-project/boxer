@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm,  FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router"
 
 @Component({
@@ -14,13 +13,18 @@ import { Router } from "@angular/router"
 export class SignUpComponent implements OnInit {
   user:  User;
   errors: string;
+  authToken: string;
 
-  constructor(private http: HttpClient, private auth: Auth, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     this.user = new User();
     this.errors = "";
   }
 
-  ngOnInit() {    
+  ngOnInit() {
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken !== null){
+      this.router.navigate(['/home']);
+    }
   }
   
   onSubmit(f: NgForm) {
@@ -31,7 +35,8 @@ export class SignUpComponent implements OnInit {
       this.http.post('http://localhost/signup/', this.user)
       .subscribe(
         data => {          
-          this.auth.token = data['authentication_token'];
+          let authToken = data['authentication_token'];
+          localStorage.setItem("authToken", JSON.stringify(authToken));
           this.router.navigate(['/home'])
 
         }, 

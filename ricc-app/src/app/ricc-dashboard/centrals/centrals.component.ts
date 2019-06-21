@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router";
 
 @Component({
@@ -13,8 +12,9 @@ export class CentralsComponent implements OnInit {
   stations: any;
   actuators: any;
   automaticIrrigation: boolean;
+  authToken: string;
 
-  constructor(private auth: Auth, private router: Router) { 
+  constructor(private router: Router) { 
     this.id = 1;
     this.status = "up";
     this.stations = ['a', 'b'];
@@ -24,7 +24,8 @@ export class CentralsComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!this.auth.token){
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken == null){
       this.router.navigate(['/login']);
     }
   }

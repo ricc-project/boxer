@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,16 +9,18 @@ import { Router } from "@angular/router";
 export class ActuatorsComponent implements OnInit {
   id: number;
   status: string;
+  authToken: string;
 
-  constructor(private auth: Auth, private router: Router) {
+  constructor(private router: Router) {
     this.id = 0;
     this.status = "up";
    }
 
-  ngOnInit() {
-    if(!this.auth.token){
+   ngOnInit() {
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken == null){
       this.router.navigate(['/login']);
     }
   }
-
+  
 }

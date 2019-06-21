@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,11 +7,13 @@ import { Router } from "@angular/router";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private auth: Auth, private router: Router) { }
+  authToken: string;
+  
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    if(!this.auth.token){
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken == null){
       this.router.navigate(['/login']);
     }
   }
