@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from '../../models/auth';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-user-guests',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserGuestsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: Auth, private router: Router) { }
 
   ngOnInit() {
+    if(!this.auth.token){
+      this.router.navigate(['/login']);
+    }
   }
 
 }

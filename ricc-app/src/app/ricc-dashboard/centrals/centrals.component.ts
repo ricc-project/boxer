@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from '../../models/auth';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-centrals',
@@ -12,7 +14,7 @@ export class CentralsComponent implements OnInit {
   actuators: any;
   automaticIrrigation: boolean;
 
-  constructor() { 
+  constructor(private auth: Auth, private router: Router) { 
     this.id = 1;
     this.status = "up";
     this.stations = ['a', 'b'];
@@ -22,6 +24,9 @@ export class CentralsComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!this.auth.token){
+      this.router.navigate(['/login']);
+    }
   }
 
 }
