@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NgForm,  FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../interfaces/User';
+import { User } from '../../models/user';
+import { Auth } from '../../models/auth';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-sign-up',
@@ -10,38 +12,41 @@ import { User } from '../../interfaces/User';
 })
 
 export class SignUpComponent implements OnInit {
+  user:  User;
+  errors: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: Auth, private router: Router) {
+    this.user = new User();
+    this.errors = "";
   }
 
-  ngOnInit() {
+  ngOnInit() {    
   }
   
   onSubmit(f: NgForm) {
-    let user = new User();
-    user.username = f.value.email;
-    user.password = f.value.password;
+    if ((f.valid) && f.value.password == f.value.cPassword) {
+      this.user.username = f.value.email;
+      this.user.password = f.value.password;
+  
+      this.http.post('http://localhost/signup/', this.user)
+      .subscribe(
+        data => {          
+          this.auth.token = data['authentication_token'];
+          this.router.navigate(['/home'])
 
-    this.http.post('http://localhost/signup/', user)
-    .subscribe(
-      data => {
-        console.log("data", data);
-        return data;
-      }, 
-      err => {
-        if (err.error.message == "username already taken") {
-          console.log("username failed");          
+        }, 
+        err => {
+          if (err.error.message == "username already taken") {
+            this.errors = "E-mail já utilizado";            
+          } else {
+            this.errors = "Um erro inesperado aconteceu";
+          }
         }
+      );      
+    }
 
-        if(err.error.message == "You need to send password and username.") {
-          console.log("Not enough infos");
-          
-        } else {
-          console.log("Something went wrong");
-          
-        }
-        
-      }
-    );
+
+
   }
+
 }

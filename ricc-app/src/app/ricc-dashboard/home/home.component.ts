@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Image } from "tns-core-modules/ui/image";
+import { Auth } from '../../models/auth';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,8 @@ export class HomeComponent implements OnInit {
   title = 'ricc-app';
   setup = false;
 
-  constructor() { }
+  constructor(private auth: Auth) { 
+  }
 
   ngOnInit() {
   }

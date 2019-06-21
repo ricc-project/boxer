@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../interfaces/User';
+import { User } from '../../models/user';
+import { Auth } from '../../models/auth';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { User } from '../../interfaces/User';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: Auth, private router: Router) { }
 
   ngOnInit() {
   }
