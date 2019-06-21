@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.auth.token){
+      this.router.navigate(['/home']);
+    }
   }
 
   onSubmit(f: NgForm) {
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {          
           this.auth.token = data['authentication_token'];
-          this.router.navigate(['/home'])
+          this.router.navigate(['/home']);
 
         }, 
         err => {
