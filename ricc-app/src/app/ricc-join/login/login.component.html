@@ -5,9 +5,9 @@
       <div class="container text-center">
         <h2> Entrar </h2>
         
-        <form>
-          <input type="text" placeholder="E-mail"/>
-          <input type="password" placeholder="Senha"/>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+          <input name="email" id="email" type="text" placeholder="E-mail" ngModel/>
+          <input name="password" id="password" type="password" placeholder="Senha" ngModel/>
   
           <button>Entrar</button>
   

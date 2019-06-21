@@ -1,16 +1,20 @@
 <body>  
   <div class="content">
     <ricc-navbar [theme]="'dark-green'"></ricc-navbar>
-    
     <div class="container text-center">
       <h2> Cadastre-se</h2>
       <h6>Crie sua conta e comece a otimizar sua produção</h6>
       
-      <form>
-        <input type="text" placeholder="E-mail"/>
-        <input type="text" placeholder="Seu código RICC"/>
-        <input type="text" placeholder="Sua senha"/>
-        <input type="text" placeholder="Confirme sua senha"/>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" validate>
+        <span class="input">
+          <input name="email" type="text" id="email" placeholder="E-mail" ngModel required/>
+        </span>
+        
+        <input name="ricc_code" type="text" id="code-ricc" placeholder="Seu código RICC" ngModel required/>
+        <input name="password" type="password" id="password" placeholder="Sua senha" ngModel required/>
+        
+        <input name="confirm_password" type="password" id="confirm_password" placeholder="Confirme sua senha" ngModel required/>
+        <label>Password must match</label>
 
         <button>Cadastre-se</button>
 

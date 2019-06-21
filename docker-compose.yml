@@ -4,7 +4,7 @@ services:
   ricc-app:
     container_name: ricc-app
     build: ./docker
-    command: ng serve --host 0.0.0.0
+    command: npm start
     privileged: true
     working_dir: /ricc-project/ricc-app
     ports:
