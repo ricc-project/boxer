@@ -18,6 +18,8 @@ services:
 
   boxer:
     build: .
+    networks:
+      - napoleon_ricc-network
     command: npm start
     privileged: true
     working_dir: /ricc-project/ricc-app
