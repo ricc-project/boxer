@@ -3,6 +3,8 @@ version: '3'
 services:
   nginx:
       image: nginx:1.15-alpine
+      networks:
+        - napoleon_ricc-network
       ports:
         - "80:80"
         - "8001:8001"
@@ -27,3 +29,7 @@ services:
 
 volumes:
   static_files:
+
+networks:
+  napoleon_ricc-network:
+    external: true
