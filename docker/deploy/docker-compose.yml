@@ -24,3 +24,6 @@ services:
     volumes:
       - .:/ricc-project
       - static_files:/ric-project/ricc-app/src
+
+volumes:
+  static_files:
