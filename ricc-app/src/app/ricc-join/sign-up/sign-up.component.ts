@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
       this.user.username = f.value.email;
       this.user.password = f.value.password;
   
-      this.http.post('http://localhost/signup/', this.user)
+      this.http.post('http://164.41.98.14/signup/', this.user)
       .subscribe(
         data => {          
           let authToken = data['authentication_token'];

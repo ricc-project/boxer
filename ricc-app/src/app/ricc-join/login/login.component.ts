@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       this.user.username = f.value.email;
       this.user.password = f.value.password;
   
-      this.http.post('http://localhost/login/', this.user)
+      this.http.post('http://164.41.98.14/login/', this.user)
       .subscribe(
         data => {          
           let authToken = data['authentication_token'];
