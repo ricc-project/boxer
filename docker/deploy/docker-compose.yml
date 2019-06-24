@@ -26,7 +26,7 @@ services:
     ports:
       - 4200:4200
     volumes:
-      - .:/ricc-project
+      - ../../.:/ricc-project
       - static_files:/ric-project/ricc-app/src
 
 volumes:
