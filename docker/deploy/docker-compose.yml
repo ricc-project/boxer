@@ -18,6 +18,7 @@ services:
 
   boxer:
     build: .
+    hostname: boxer
     networks:
       - napoleon_ricc-network
     command: npm start
