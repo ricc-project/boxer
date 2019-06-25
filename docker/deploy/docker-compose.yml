@@ -3,24 +3,18 @@ version: '3'
 services:
   nginx:
       image: nginx:1.15-alpine
-      networks:
-        - napoleon_ricc-network
+      network_mode: 'host'
       ports:
         - "80:80"
-        - "8001:8001"
         - "443:443"
       volumes:
         - ./data:/etc/nginx/conf.d
         - static_files:/usr/share/nginx/html/static/
       command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-      depends_on:
-        - boxer
 
   boxer:
     build: .
     hostname: boxer
-    networks:
-      - napoleon_ricc-network
     command: npm start
     privileged: true
     working_dir: /ricc-project/ricc-app
@@ -32,7 +26,3 @@ services:
 
 volumes:
   static_files:
-
-networks:
-  napoleon_ricc-network:
-    external: true
