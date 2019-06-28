@@ -28,11 +28,11 @@ export class CentralsComponent implements OnInit {
   }
 
   switchActuator(central){
+    this.authToken = this.authToken.substring(1, this.authToken.length-1);
     let message = {
       central: central.id,
       auth_token: this.authToken
-    };
-  
+    };  
     
     // this.central.automaticIrrigation = !automaticIrrigation;
     // console.log("YOUUU", automaticIrrigation);
@@ -43,9 +43,9 @@ export class CentralsComponent implements OnInit {
     //   auth_token: this.authToken
     // };
 
+    console.log("asdf", message);
 
-
-    this.http.post('http://snowball.lappis.rocks/actuator/switch', message)
+    this.http.post('http://10.0.0.144/actuator/switch/', message)
     .subscribe(
       data => {
         console.log("Alterou", data);
