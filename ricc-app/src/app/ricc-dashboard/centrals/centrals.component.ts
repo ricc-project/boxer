@@ -69,7 +69,8 @@ export class CentralsComponent implements OnInit {
     this.http.get('http://snowball.lappis.rocks/api/v1/centrals/')
     .subscribe(
       data => {
-        for (const cData of data) {
+        let d = data as Array<Object>;
+        for (const cData of d) {
           let central = new Central;
            
           central.id = cData['mac_address'];
