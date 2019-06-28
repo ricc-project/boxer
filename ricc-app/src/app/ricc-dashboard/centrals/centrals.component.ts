@@ -94,24 +94,7 @@ export class CentralsComponent implements OnInit {
           this.changeStatusText = "Um erro inesperado aconteceu!";
         }
       );
-
-      // this.http.post('')
-      // .subscribe(
-      //   data => {
-      //       central.actuators = data;
-      //   }, 
-      //   err => {
-      //     this.changeStatusText = "Um erro inesperado aconteceu!";
-      //   }
-      // );
-
     }
-
-    
-
-
-
-
 
     return centrals;
   }
