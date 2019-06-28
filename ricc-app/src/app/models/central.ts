@@ -1,6 +1,5 @@
 export class Central {
-    id: number;
-    status: string;
+    id: string;
     stations: number;
     actuators: number;
     automaticIrrigation: boolean;

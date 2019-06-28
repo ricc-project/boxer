@@ -11,11 +11,7 @@
             <span id="centrals-title">Central <span id="centrals-name">{{ central.id }}</span></span> 
           </div>
 
-          <div>
-            <i *ngIf="central.status == 'up'" class="text-success fas fa-circle"></i>
-            <i *ngIf="central.status == 'down'" class="text-danger fas fa-circle"></i>
-            <i *ngIf="central.status == 'warning'" class="text-warning fas fa-circle"></i>
-  
+          <div>  
             <a href="#" class="text-right" id="edit-central">
               <i class="text-right fas fa-pen" id="edit-icon"></i>
             </a>
@@ -41,7 +37,7 @@
           <div class="col">
             <span>
               <label class="switch">
-                <input type="checkbox" (click)="switchActuator(central)" ngModel="central.automaticIrrigation">
+                <input type="checkbox">
                 <span class="slider round"></span>
               </label>
             </span>

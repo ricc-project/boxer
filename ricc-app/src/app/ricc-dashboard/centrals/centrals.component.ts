@@ -19,7 +19,7 @@ export class CentralsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authToken = localStorage.getItem("authToken");
+    this.authToken = JSON.parse(localStorage.getItem("authToken"));
     if(this.authToken == null){
       this.router.navigate(['/login']);
     }
@@ -27,44 +27,8 @@ export class CentralsComponent implements OnInit {
     this.centrals = this.loadCentrals();
   }
 
-  switchActuator(central){
-    this.authToken = this.authToken.substring(1, this.authToken.length-1);
-    let message = {
-      central: central.id,
-      auth_token: this.authToken
-    };  
-    
-    // this.central.automaticIrrigation = !automaticIrrigation;
-    // console.log("YOUUU", automaticIrrigation);
-    // this.changeStatusText = "Aplicando alterações";  
-
-    // let message = { 
-    //   central: "b8:27:eb:b1:85:66",
-    //   auth_token: this.authToken
-    // };
-
-    console.log("asdf", message);
-
-    this.http.post('http://10.0.0.144/actuator/switch/', message)
-    .subscribe(
-      data => {
-        console.log("Alterou", data);
-        
-      }, 
-      err => {
-        console.log(err);
-        
-        this.changeStatusText = "Um erro inesperado aconteceu!";
-      }
-    ); 
-
-  }
-
-
   loadCentrals(){
     let centrals = []
-    let a = [1, 2]
-
 
     this.http.get('http://snowball.lappis.rocks/api/v1/centrals/')
     .subscribe(
@@ -72,23 +36,82 @@ export class CentralsComponent implements OnInit {
         let d = data as Array<Object>;
         for (const cData of d) {
           let central = new Central;
-           
           central.id = cData['mac_address'];
-          central.status = "up";
-          central.stations = 2;
-          central.actuators = 1;
           central.automaticIrrigation = cData['automatic_irrigation'];
-          // central.automaticIrrigation = true;
-          
-          centrals.push(central)      
-        }
 
-        console.log(data);
+          let args= {
+            central: central.id,
+            auth_token: this.authToken
+          };  
+
+          // Get amount of stations
+          this.http.post('http://snowball.lappis.rocks/central/stations_count/', args)
+          .subscribe(
+            data => {
+              central.stations = data['message'];
+            }, 
+            err => {
+              this.changeStatusText = "Um erro inesperado aconteceu!";
+            }
+          );
+          
+          // Get amount of actuators
+          this.http.post('http://snowball.lappis.rocks/central/actuators_count/', args)
+          .subscribe(
+            data => {
+              central.actuators = data['message'];
+            }, 
+            err => {
+              this.changeStatusText = "Um erro inesperado aconteceu!";
+            }
+          );
+
+
+          centrals.push(central)
+                
+        }
       }, 
       err => {
         this.changeStatusText = "Um erro inesperado aconteceu!";
       }
     );
+    
+
+    
+    for (const central of centrals) {
+      let message = {
+        central: central.id,
+        auth_token: this.authToken
+      };  
+  
+      this.http.post('http://snowball.lappis.rocks/central/stations_count/', message)
+      .subscribe(
+        data => {
+          console.log(data);
+          central.stations = data;
+        }, 
+        err => {
+          this.changeStatusText = "Um erro inesperado aconteceu!";
+        }
+      );
+
+      // this.http.post('')
+      // .subscribe(
+      //   data => {
+      //       central.actuators = data;
+      //   }, 
+      //   err => {
+      //     this.changeStatusText = "Um erro inesperado aconteceu!";
+      //   }
+      // );
+
+    }
+
+    
+
+
+
+
 
     return centrals;
   }

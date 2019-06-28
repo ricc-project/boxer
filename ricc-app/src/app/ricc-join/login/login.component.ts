@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   
       this.http.post('http://snowball.lappis.rocks/login/', this.user)
       .subscribe(
-        data => {          
+        data => {         
           let authToken = data['authentication_token'];
           localStorage.setItem("authToken", JSON.stringify(authToken));
           this.router.navigate(['/home']);
