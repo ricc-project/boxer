@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'landing-page',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+  authToken: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken !== null){
+      this.router.navigate(['/home']);
+    }
   }
 
 }

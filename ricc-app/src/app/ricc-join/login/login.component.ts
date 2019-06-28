@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
-import { Router } from "@angular/router"
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authToken = localStorage.getItem("authToken");
-    if(this.authToken == null){
-      this.router.navigate(['/login']);
+    if(this.authToken !== null){
+      this.router.navigate(['/home']);
     }
   }
   onSubmit(f: NgForm) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-see-more',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./see-more.component.scss']
 })
 export class SeeMoreComponent implements OnInit {
-
-  constructor() { }
+  authToken: string;
+  
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.authToken = localStorage.getItem("authToken");
+    if(this.authToken !== null){
+      this.router.navigate(['/home']);
+    }
   }
 
 }
