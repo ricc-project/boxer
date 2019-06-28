@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,8 @@ export class HomeComponent implements OnInit {
   setup = false;
   authToken: string;
 
+  items = ['Zero', 'One', 'Two', 'Three'];
+
   constructor(private router: Router) { 
   }
 
@@ -19,6 +22,10 @@ export class HomeComponent implements OnInit {
     if(this.authToken == null){
       this.router.navigate(['/login']);
     }
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
   }
 
 }

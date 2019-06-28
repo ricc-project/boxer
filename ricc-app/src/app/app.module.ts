@@ -20,7 +20,7 @@ import { CentralsComponent } from './ricc-dashboard/centrals/centrals.component'
 import { StationsComponent } from './ricc-dashboard/stations/stations.component';
 import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
 import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.co
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
