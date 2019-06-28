@@ -4,16 +4,18 @@
 
     <div class="container text-center">
 
-      <div class="card">
+      <div class="card" *ngFor="let central of centrals;">
         <div class="card-header centrals-top d-flex align-items-center justify-content-between">
           <div>
-            <span id="centrals-title">Central {{ id }}</span> 
-            <i *ngIf="status == 'up'" class="text-success fas fa-circle"></i>
-            <i *ngIf="status == 'down'" class="text-danger fas fa-circle"></i>
-            <i *ngIf="status == 'warning'" class="text-warning fas fa-circle"></i>
+            
+            <span id="centrals-title">Central <span id="centrals-name">{{ central.id }}</span></span> 
           </div>
 
           <div>
+            <i *ngIf="central.status == 'up'" class="text-success fas fa-circle"></i>
+            <i *ngIf="central.status == 'down'" class="text-danger fas fa-circle"></i>
+            <i *ngIf="central.status == 'warning'" class="text-warning fas fa-circle"></i>
+  
             <a href="#" class="text-right" id="edit-central">
               <i class="text-right fas fa-pen" id="edit-icon"></i>
             </a>
@@ -26,23 +28,24 @@
         <div class="card-body row centrals-content">
           <div class="col border-right">
             <span id="option-icon"><i class="fas fa-broadcast-tower"></i></span>
-            <p id="number">{{ stations ? stations.length : '0' }}</p>
+            <p id="number">{{ central.stations }}</p>
             <p>Estações</p>
           </div>
 
           <div class="col border-right">
             <span id="option-icon"><i class="fas fa-shower"></i></span>
-            <p id="number">{{ actuators ? actuators.length : '0' }}</p>
+            <p id="number">{{ central.actuators }}</p>
             <p>Atuadores</p>
           </div>
 
           <div class="col">
             <span>
               <label class="switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" (click)="switchActuator(central)" ngModel="central.automaticIrrigation">
                 <span class="slider round"></span>
               </label>
             </span>
+            <p>{{ changeStatusText }}</p>
             <p>Irrigação automática</p>
           </div>
 
