@@ -17,8 +17,6 @@ export class StationsComponent implements OnInit {
   relatedCentral: string;
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { 
-    this.id = 0;
-    this.status = "up";
     this.relatedCentral = null;
   }
 

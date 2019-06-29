@@ -71,6 +71,10 @@ export const routes: Routes = [
     component: ActuatorsComponent,
   },
   {
+    path: 'riccs/:central/actuators',
+    component: ActuatorsComponent,
+  },
+  {
     path: 'user/guests',
     component: UserGuestsComponent,
   },
