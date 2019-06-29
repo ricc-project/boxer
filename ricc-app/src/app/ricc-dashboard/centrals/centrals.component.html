@@ -8,7 +8,7 @@
         <div class="card-header centrals-top d-flex align-items-center justify-content-between">
           <div>
             
-            <span id="centrals-title">Central <span id="centrals-name">{{ central.id }}</span></span> 
+            <span id="centrals-title">Central <span id="centrals-name">{{ central.mac_address }}</span></span> 
           </div>
 
           <div>  
@@ -24,20 +24,20 @@
         <div class="card-body row centrals-content">
           <div class="col border-right">
             <span id="option-icon"><i class="fas fa-broadcast-tower"></i></span>
-            <p id="number">{{ central.stations }}</p>
+            <p id="number">{{ central.amount_stations }}</p>
             <p>Estações</p>
           </div>
 
           <div class="col border-right">
             <span id="option-icon"><i class="fas fa-shower"></i></span>
-            <p id="number">{{ central.actuators }}</p>
+            <p id="number">{{ central.amount_actuators }}</p>
             <p>Atuadores</p>
           </div>
 
           <div class="col">
             <span>
               <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" [checked]="central.automatic_irrigation">
                 <span class="slider round"></span>
               </label>
             </span>

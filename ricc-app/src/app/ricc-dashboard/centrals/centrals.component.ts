@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { Central } from '../../models/central';
+import { BaseURL } from '../../models/baseUrl';
 
 @Component({
   selector: 'app-centrals',
@@ -31,46 +32,14 @@ export class CentralsComponent implements OnInit {
 
   loadCentrals(){
     let centrals = []
+    let args = {auth_token: this.authToken};
 
-    this.http.get('http://snowball.lappis.rocks/api/v1/centrals/')
+    this.http.post(BaseURL + 'centrals/', args)
     .subscribe(
       data => {
-        let d = data as Array<Object>;
-        for (const cData of d) {
-          let central = new Central;
-          central.id = cData['mac_address'];
-          central.automaticIrrigation = cData['automatic_irrigation'];
-
-          let args= {
-            central: central.id,
-            auth_token: this.authToken
-          };  
-          
-          // Get amount of stations
-          this.http.post('http://snowball.lappis.rocks/central/stations_count/', args)
-          .subscribe(
-            data => {
-              central.stations = data['message'];
-            }, 
-            err => {
-              this.changeStatusText = "Um erro inesperado aconteceu!";
-            }
-          );
-          
-          // Get amount of actuators
-          this.http.post('http://snowball.lappis.rocks/central/actuators_count/', args)
-          .subscribe(
-            data => {
-              central.actuators = data['message'];
-            }, 
-            err => {
-              this.changeStatusText = "Um erro inesperado aconteceu!";
-            }
-          );
-
-
-          centrals.push(central)
-                
+        console.log(data);
+        for (const central of data['centrals']) {
+          centrals.push(central);          
         }
       }, 
       err => {
