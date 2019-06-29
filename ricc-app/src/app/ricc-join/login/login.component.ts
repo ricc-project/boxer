@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
 import { Router } from "@angular/router";
+import { BaseURL } from '../../models/baseUrl';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.user.username = f.value.email;
       this.user.password = f.value.password;
   
-      this.http.post('http://snowball.lappis.rocks/login/', this.user)
+      this.http.post(BaseURL + 'login/', this.user)
       .subscribe(
         data => {         
           let authToken = data['authentication_token'];

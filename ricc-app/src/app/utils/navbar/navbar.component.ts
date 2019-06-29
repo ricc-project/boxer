@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Auth } from '../../models/auth';
 import { Router } from "@angular/router"
 
 @Component({
@@ -12,7 +11,7 @@ export class NavbarComponent implements OnInit {
   @Input('isLoggedIn') isLoggedIn: boolean;
   sidebarStatus: string;
 
-  constructor(private auth: Auth, private router: Router) {
+  constructor(private router: Router) {
     this.sidebarStatus = "sidebar-open";
   }
 

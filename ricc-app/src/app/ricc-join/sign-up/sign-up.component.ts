@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm,  FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../models/user';
-import { Router } from "@angular/router"
+import { Router } from "@angular/router";
+import { BaseURL } from '../../models/baseUrl';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,7 +33,7 @@ export class SignUpComponent implements OnInit {
       this.user.username = f.value.email;
       this.user.password = f.value.password;
   
-      this.http.post('http://snowball.lappis.rocks/signup/', this.user)
+      this.http.post(BaseURL + 'signup/', this.user)
       .subscribe(
         data => {          
           let authToken = data['authentication_token'];
