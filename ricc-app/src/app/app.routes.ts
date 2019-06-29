@@ -63,7 +63,7 @@ export const routes: Routes = [
     component: StationsComponent,
   },
   {
-    path: 'riccs/stations/:central',
+    path: 'riccs/:central/stations',
     component: StationsComponent,
   },
   {

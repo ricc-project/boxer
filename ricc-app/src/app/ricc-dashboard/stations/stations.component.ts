@@ -27,8 +27,6 @@ export class StationsComponent implements OnInit {
     if(this.authToken == null){
       this.router.navigate(['/login']);
     } else{
-      console.log(this.route.snapshot.queryParamMap);
-      
       this.relatedCentral = this.route.snapshot.paramMap.get('central')
       this.stations = this.loadStations();
     }
