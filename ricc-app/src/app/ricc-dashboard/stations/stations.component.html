@@ -6,17 +6,16 @@
         <h1 id="page-title">Suas estações</h1>
   
         <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="docs-header">
-              <button class="btn-link text-left align-content-center" data-toggle="collapse" data-target="#docs">
+          <div class="card" *ngFor="let station of stations;">
+            <div class="card-header" id="{{ station.name + '_header' }}">
+              <button class="btn-link text-left align-content-center" data-toggle="collapse" [attr.data-target]="'#station_' + station.name">
                 <div>
                   <span id="title">
                     <i class="fas fa-broadcast-tower"></i>
-                    Estação {{  id }}
+                    Estação {{ station.name }}
 
-                    <i *ngIf="status == 'up'" class="text-success fas fa-circle"></i>
-                    <i *ngIf="status == 'down'" class="text-danger fas fa-circle"></i>
-                    <i *ngIf="status == 'warning'" class="text-warning fas fa-circle"></i>
+                    <i *ngIf="station.status == true" class="text-success fas fa-circle"></i>
+                    <i *ngIf="station.status == false" class="text-danger fas fa-circle"></i>
             
                   </span>
                 </div>
@@ -33,7 +32,7 @@
                 </button>
             </div>
         
-            <div id="docs" class="collapse" aria-labelledby="docs" data-parent="#accordion">
+            <div id="{{ 'station_' + station.name }}" class="collapse" aria-labelledby="station" data-parent="#accordion">
               <div class="card-body">
                 <table class="table table-sm table-bordered table-hover">
                   <tbody>

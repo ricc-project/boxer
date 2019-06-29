@@ -22,9 +22,11 @@ export class CentralsComponent implements OnInit {
     this.authToken = JSON.parse(localStorage.getItem("authToken"));
     if(this.authToken == null){
       this.router.navigate(['/login']);
+    }else{
+      this.centrals = this.loadCentrals();
     }
 
-    this.centrals = this.loadCentrals();
+
   }
 
   loadCentrals(){
@@ -43,7 +45,7 @@ export class CentralsComponent implements OnInit {
             central: central.id,
             auth_token: this.authToken
           };  
-
+          
           // Get amount of stations
           this.http.post('http://snowball.lappis.rocks/central/stations_count/', args)
           .subscribe(
@@ -76,26 +78,6 @@ export class CentralsComponent implements OnInit {
       }
     );
     
-
-    
-    for (const central of centrals) {
-      let message = {
-        central: central.id,
-        auth_token: this.authToken
-      };  
-  
-      this.http.post('http://snowball.lappis.rocks/central/stations_count/', message)
-      .subscribe(
-        data => {
-          console.log(data);
-          central.stations = data;
-        }, 
-        err => {
-          this.changeStatusText = "Um erro inesperado aconteceu!";
-        }
-      );
-    }
-
     return centrals;
   }
 }
