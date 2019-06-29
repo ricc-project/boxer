@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { Station } from '../../models/station';
+import { BaseURL } from '../../models/baseUrl';
 
 @Component({
   selector: 'app-stations',
@@ -13,10 +14,12 @@ export class StationsComponent implements OnInit {
   status: string;
   authToken: string;
   stations: Array<Station>;
+  relatedCentral: string;
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { 
     this.id = 0;
     this.status = "up";
+    this.relatedCentral = null;
   }
 
   ngOnInit() {
@@ -24,6 +27,9 @@ export class StationsComponent implements OnInit {
     if(this.authToken == null){
       this.router.navigate(['/login']);
     } else{
+      console.log(this.route.snapshot.queryParamMap);
+      
+      this.relatedCentral = this.route.snapshot.paramMap.get('central')
       this.stations = this.loadStations();
     }
   }
@@ -32,50 +38,22 @@ export class StationsComponent implements OnInit {
   loadStations(){
     let stations = []
 
-    this.http.get('http://snowball.lappis.rocks/api/v1/stations/')
+    let args = {
+      auth_token: this.authToken  
+    }
+
+    this.http.post(BaseURL + 'stations/', args)
     .subscribe(
-      data => {        
-        let d = data as Array<Object>;
-        for (const sData of d) {
-          let args= {
-            central: "b8:27:eb:b1:85:66",
-            auth_token: this.authToken,
-            name: sData['name'],
-          };  
-          
-          let station = new Station;
-          station.name = sData['name'];
-          
-          // Get status of station
-          this.http.post('http://snowball.lappis.rocks/node/status/', args)
-          .subscribe(
-            data => {
-              if (data['status'] == "True") {
-                station.status = true;
-              } else{
-                station.status = false;
-              } 
-            }, 
-            err => {
-              console.log("Not enough");
-              
+      data => {
+        for (const station of data['stations']) {
+          if (this.relatedCentral !== null){
+            if (this.relatedCentral == station.related_central){
+              stations.push(station);
             }
-          );
-
-          // Get last data of station
-          this.http.post('http://snowball.lappis.rocks/central/last_datas/', args)
-          .subscribe(
-            data => {
-              console.log(data);
-            }, 
-            err => {
-              console.log("Not enough");
-              
-            }
-          );
-
-          stations.push(station);
-        }
+          } else{
+            stations.push(station);
+          }
+        }      
       }, 
       err => {
         console.log("Not good enough!");

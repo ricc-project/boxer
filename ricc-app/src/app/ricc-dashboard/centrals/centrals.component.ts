@@ -37,7 +37,6 @@ export class CentralsComponent implements OnInit {
     this.http.post(BaseURL + 'centrals/', args)
     .subscribe(
       data => {
-        console.log(data);
         for (const central of data['centrals']) {
           centrals.push(central);          
         }

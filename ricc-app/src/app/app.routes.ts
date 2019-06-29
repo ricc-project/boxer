@@ -63,6 +63,10 @@ export const routes: Routes = [
     component: StationsComponent,
   },
   {
+    path: 'riccs/stations/:central',
+    component: StationsComponent,
+  },
+  {
     path: 'riccs/actuators',
     component: ActuatorsComponent,
   },
