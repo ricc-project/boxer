@@ -15,9 +15,12 @@ export class StationsComponent implements OnInit {
   authToken: string;
   stations: Array<Station>;
   relatedCentral: string;
+  centrals: Array<string>;
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { 
     this.relatedCentral = null;
+    this.centrals = [];
+    this.stations = [];
   }
 
   ngOnInit() {
@@ -26,7 +29,7 @@ export class StationsComponent implements OnInit {
       this.router.navigate(['/login']);
     } else{
       this.relatedCentral = this.route.snapshot.paramMap.get('central')
-      this.stations = this.loadStations();
+      this.loadStations();
     }
   }
 
@@ -42,22 +45,64 @@ export class StationsComponent implements OnInit {
     .subscribe(
       data => {
         for (const station of data['stations']) {
+          // Filter of stations by central
           if (this.relatedCentral !== null){
             if (this.relatedCentral == station.related_central){
               stations.push(station);
+              this.getCentrals(station);
             }
           } else{
             stations.push(station);
+            this.getCentrals(station);
           }
-        }      
+        }
+        this.addDataStations(stations);      
       }, 
       err => {
         console.log("Not good enough!");
         
       }
     );
-    
-    return stations;
   }
 
+  getCentrals(station){
+    // Get centrals 
+    if(this.centrals.indexOf(station.related_central) == -1 ){
+      this.centrals.push(station.related_central);            
+    }
+  }
+
+  addDataStations(stations){
+    for (const central of this.centrals) {      
+
+      let args = {
+        auth_token: this.authToken,
+        central: central
+      }
+
+      this.http.post(BaseURL + 'central/last_datas/', args)
+      .subscribe(
+        data => {
+          let datas = data as Array<any>;
+          
+          for (const d of datas) {
+            let stationName = d['station']['name'];
+            let stationData = d['data'];
+
+            let station = stations.find(s => s.name === stationName);            
+            station.data = stationData;
+            this.stations.push(station);            
+          }
+          console.log("asdf", this.stations);
+        }, 
+        err => {
+          console.log("Not good enough!");
+          
+        }
+      );  
+            
+    }
+
+
+  }
 }

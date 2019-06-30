@@ -38,54 +38,58 @@
                   <tbody>
                     <tr>
                       <td>Umidade solo ponto 01</td>
-                      <td>10%</td>
+                      <td>{{ station.data.soil_datas[0].moisture1 }} %</td>
                     </tr>
 
                     <tr>
                       <td>Umidade solo ponto 02</td>
-                      <td>20%</td>
+                      <td>{{ station.data.soil_datas[0].moisture2 }} %</td>
                     </tr>
 
                     <tr>
                       <td>Umidade solo ponto 03</td>
-                      <td>30%</td>
+                      <td>{{ station.data.soil_datas[0].moisture3 }} %</td>
                     </tr>
 
                     <tr>
                       <td>Temperatura do solo</td>
-                      <td>20ºC</td>
+                      <td>{{ station.data.soil_datas[0].temperature }} ºC</td>
                     </tr>
 
                     <tr>
                       <td>Temperatura Ambiente</td>
-                      <td>24ºC</td>
+                      <td>{{ station.data.air_datas[0].temperature }} ºC</td>
                     </tr>
 
                     <tr>
                       <td>Pressão atmosférica</td>
-                      <td>0,7 kgf/cm²</td>
+                      <td>{{ station.data.air_datas[0].temperature }} kgf/cm²</td>
                     </tr>
   
                     <tr>
                       <td>Umidade relativa do ar</td>
-                      <td>50%</td>
+                      <td>{{ station.data.air_datas[0].humidity }} %</td>
                     </tr>
   
                     <tr>
                       <td>Radiação Solar</td>
-                      <td>100W/m²</td>
+                      <td>{{ station.data.solar_datas[0].radiation }}  W/m²</td>
                     </tr>
   
                     <tr>
                       <td>Velocidade do vento</td>
-                      <td>10 km/h</td>
+                      <td>{{ station.data.wind_datas[0].speed }}  km/h</td>
                     </tr>
   
                     <tr>
                       <td>Direção do vento</td>
-                      <td>E - Lest</td>
+                      <td>{{ station.data.wind_datas[0].direction }} </td>
                     </tr>
   
+                    <tr>
+                      <td>Pluviosidade</td>
+                      <td>{{ station.data.rain_datas[0].rainfall }} mml</td>
+                    </tr>
 
                   </tbody>
                 </table>
