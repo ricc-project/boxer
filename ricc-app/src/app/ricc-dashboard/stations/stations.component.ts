@@ -92,17 +92,14 @@ export class StationsComponent implements OnInit {
             let station = stations.find(s => s.name === stationName);            
             station.data = stationData;
             this.stations.push(station);            
-          }
-          console.log("asdf", this.stations);
+          }          
         }, 
         err => {
           console.log("Not good enough!");
           
         }
-      );  
-            
+      );        
     }
-
 
   }
 }
