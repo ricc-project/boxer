@@ -21,6 +21,7 @@ import { StationsComponent } from './ricc-dashboard/stations/stations.component'
 import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
 import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TemperatureCardComponent } from './graphics/soil/temperature-card/temperature-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     StationsComponent,
     ActuatorsComponent,
     UserGuestsComponent,
+    TemperatureCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ import { CentralsComponent } from './ricc-dashboard/centrals/centrals.component'
 import { StationsComponent } from './ricc-dashboard/stations/stations.component';
 import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
 import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
+import { TemperatureCardComponent } from './graphics/soil/temperature-card/temperature-card.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -44,6 +45,7 @@ import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.co
     StationsComponent,
     ActuatorsComponent,
     UserGuestsComponent,
+    TemperatureCardComponent,
   ],
   imports: [
     NativeScriptModule,
