@@ -29,8 +29,7 @@ export class StationsComponent implements OnInit {
       this.router.navigate(['/login']);
     } else{
       this.relatedCentral = this.route.snapshot.paramMap.get('central')
-      this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);
-      
+      this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);      
     }
   }
 

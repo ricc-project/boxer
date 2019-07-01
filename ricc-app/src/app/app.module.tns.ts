@@ -19,6 +19,11 @@ import { StationsComponent } from './ricc-dashboard/stations/stations.component'
 import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
 import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
 import { TemperatureCardComponent } from './graphics/soil/temperature-card/temperature-card.component';
+import { HumidityCardComponent } from './graphics/soil/humidity-card/humidity-card.component';
+import { PressureCardComponent } from './graphics/air/pressure-card/pressure-card.component';
+import { RadiationCardComponent } from './graphics/solar/radiation-card/radiation-card.component';
+import { SpeedDirectionCardComponent } from './graphics/wind/speed-direction-card/speed-direction-card.component';
+import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-card.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -46,6 +51,11 @@ import { TemperatureCardComponent } from './graphics/soil/temperature-card/tempe
     ActuatorsComponent,
     UserGuestsComponent,
     TemperatureCardComponent,
+    HumidityCardComponent,
+    PressureCardComponent,
+    RadiationCardComponent,
+    SpeedDirectionCardComponent,
+    RainfallCardComponent,
   ],
   imports: [
     NativeScriptModule,

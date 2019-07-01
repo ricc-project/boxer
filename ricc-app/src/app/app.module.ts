@@ -21,7 +21,15 @@ import { StationsComponent } from './ricc-dashboard/stations/stations.component'
 import { ActuatorsComponent } from './ricc-dashboard/actuators/actuators.component';
 import { UserGuestsComponent } from './ricc-dashboard/user-guests/user-guests.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TemperatureCardComponent } from './graphics/soil/temperature-card/temperature-card.component';
+import { SoilTemperatureCardComponent } from './graphics/soil/temperature-card/temperature-card.component';
+import { SoilHumidityCardComponent } from './graphics/soil/humidity-card/humidity-card.component';
+import { AirTemperatureCardComponent } from './graphics/air/temperature-card/temperature-card.component';
+import { AirHumidityCardComponent } from './graphics/air/humidity-card/humidity-card.component';
+
+import { PressureCardComponent } from './graphics/air/pressure-card/pressure-card.component';
+import { RadiationCardComponent } from './graphics/solar/radiation-card/radiation-card.component';
+import { SpeedDirectionCardComponent } from './graphics/wind/speed-direction-card/speed-direction-card.component';
+import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-card.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +49,14 @@ import { TemperatureCardComponent } from './graphics/soil/temperature-card/tempe
     StationsComponent,
     ActuatorsComponent,
     UserGuestsComponent,
-    TemperatureCardComponent,
+    SoilTemperatureCardComponent,
+    SoilHumidityCardComponent,
+    AirTemperatureCardComponent,
+    AirHumidityCardComponent,
+    PressureCardComponent,
+    RadiationCardComponent,
+    SpeedDirectionCardComponent,
+    RainfallCardComponent,
   ],
   imports: [
     BrowserModule,
