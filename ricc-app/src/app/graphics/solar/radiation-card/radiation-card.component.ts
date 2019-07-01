@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-radiation-card',
+  selector: 'solar-radiation-card',
   templateUrl: './radiation-card.component.html',
   styleUrls: ['./radiation-card.component.scss']
 })
 export class RadiationCardComponent implements OnInit {
+  @Input('value') value: number;  
 
   constructor() { }
 

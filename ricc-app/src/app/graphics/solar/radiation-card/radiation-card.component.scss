@@ -1,0 +1,57 @@
+@import '../../../app.component.scss';
+
+.card-body {
+    background-color: #ccc;
+    width: 249px;
+    margin: 10px;
+    padding: 0px;
+}
+
+.card-title {
+    background-color: #aaa;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 0px;
+}
+
+.card-value {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#text {
+    align-items: baseline;
+}
+
+#value {
+    align-items: baseline;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+#unit {
+    align-items: baseline;
+    font-size: 1.6em;
+    font-weight: thin;
+    margin-left: 10px;
+}
+
+
+.card-icon {
+    padding: 0px;
+    margin: 0px;
+    margin-top: 5px;
+    width: fit-content;
+}
+
+i {
+    height: 100%;
+    width: 100%;
+    font-size: 10em;
+    overflow: hidden;
+    color: $green-color;
+}
+
