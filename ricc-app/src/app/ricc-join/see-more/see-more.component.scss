@@ -23,3 +23,14 @@
 p {
     margin-top: 5px;
 }
+
+.input {
+    margin-left: 25%;
+    padding: 10px;
+}
+
+@media (max-width: 991.98px) { 
+    .input {
+        margin-left: 0%;
+    }
+}
