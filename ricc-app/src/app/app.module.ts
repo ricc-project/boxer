@@ -66,6 +66,10 @@ import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-ca
     DragDropModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    SoilTemperatureCardComponent,
+    AirTemperatureCardComponent
+  ],
 })
 export class AppModule { }

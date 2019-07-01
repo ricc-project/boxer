@@ -3,7 +3,7 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-      <div *ngIf="stations.length <= 0" class="content-container">
+      <div [hidden]="stations.length > 0" class="content-container">
         <h1>Seja bem-vindo</h1>
 
         <p>Proceda com a instalação e configuração da sua rede.</p>
@@ -26,14 +26,23 @@
         </div>
       </div>
 
+      
+
       <!-- Has centrals -->
-      <div *ngIf="stations.length > 0" class="content">
+      <div [hidden]="stations.length <= 0" class="content">
         <h1>Seja bem-vindo</h1>
   
         <p>Esses são seus últimos dados</p>
 
+
+
         <div class="board">
-          <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor = "let card of cards">
+            {{ card.name }}
+            <ng-template #parent></ng-template>
+          </div>
+
+          <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
 
             <div *ngFor="let station of stations;">
               <div cdkDrag cdkDragBoundary=".container" style="background-color: #ccc; margin:10px">
@@ -42,7 +51,7 @@
               </div>
             </div>
 
-          </div>
+          </div> -->
         </div>  
       </div>
     </div>
