@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
 import { Central } from '../../models/central';
-import { BaseURL } from '../../models/baseUrl';
+import { Requests } from '../../utils/requests/requests'
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-centrals',
@@ -13,10 +14,11 @@ export class CentralsComponent implements OnInit {
   centrals: Array<Central>;
   authToken: string;
   changeStatusText: string;
+  requests: Requests;
 
   constructor(private http: HttpClient, private router: Router) { 
     this.changeStatusText = "";
-
+    this.requests = new Requests(this.http);
   }
 
   ngOnInit() {
@@ -24,28 +26,9 @@ export class CentralsComponent implements OnInit {
     if(this.authToken == null){
       this.router.navigate(['/login']);
     }else{
-      this.centrals = this.loadCentrals();
+      this.centrals = this.requests.loadCentrals(this.authToken);
     }
 
 
-  }
-
-  loadCentrals(){
-    let centrals = []
-    let args = {auth_token: this.authToken};
-
-    this.http.post(BaseURL + 'centrals/', args)
-    .subscribe(
-      data => {
-        for (const central of data['centrals']) {
-          centrals.push(central);          
-        }
-      }, 
-      err => {
-        this.changeStatusText = "Um erro inesperado aconteceu!";
-      }
-    );
-    
-    return centrals;
   }
 }
