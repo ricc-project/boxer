@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
-import { Central } from '../../models/central';
-import { BaseURL } from '../../models/baseUrl';
+import { Station } from '../../models/station';
+import { Requests } from '../../utils/requests/requests'
 
 @Component({
   selector: 'app-home',
@@ -13,42 +13,31 @@ import { BaseURL } from '../../models/baseUrl';
 export class HomeComponent implements OnInit {
   title = 'ricc-app';
   authToken: string;
-  centrals: Array<Central>;
+  stations: Array<Station>;
+  relatedCentral: string;
+  requests: Requests;
 
   items = ['Zero', 'One', 'Two', 'Three'];
 
   constructor(private http: HttpClient, private router: Router) {
-    this.centrals = [];
+    this.requests = new Requests(this.http);
+    this.relatedCentral = null;
+    this.stations = [];
   }
 
   ngOnInit() {
-    this.authToken = localStorage.getItem("authToken");
+    this.authToken = JSON.parse(localStorage.getItem("authToken"));
     if(this.authToken == null){
       this.router.navigate(['/login']);
+    } else {
+      this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);
+      console.log(this.stations);
+      
     }
   }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
-  }
-
-  loadCentrals(){
-    let centrals = []
-    let args = {auth_token: this.authToken};
-
-    this.http.post(BaseURL + 'centrals/', args)
-    .subscribe(
-      data => {
-        for (const central of data['centrals']) {
-          centrals.push(central);          
-        }
-      }, 
-      err => {
-        console.log("Um erro inesperado aconteceu!");
-      }
-    );
-    
-    return centrals;
   }
 
 }

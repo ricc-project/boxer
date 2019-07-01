@@ -3,9 +3,8 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-      <!-- <div *ngIf="!setup" class="content-container">
+      <div *ngIf="stations.length <= 0" class="content-container">
         <h1>Seja bem-vindo</h1>
-        {{ authToken }}
 
         <p>Proceda com a instalação e configuração da sua rede.</p>
         <p>Após, sinta-se livre para customizar seu painel principal com os widgets que achar necessário</p>
@@ -25,36 +24,28 @@
             </a>
           </div>
         </div>
-      </div> -->
+      </div>
 
-
-      <div class="board">
-
-        
-        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-          <div cdkDrag cdkDragBoundary=".container" style="background-color: red; margin:10px">
-            <div cdkDragHandle style="background-color: blue;">ASDF</div>
-            DOCK 1
-          </div>
-    
-          <div cdkDrag cdkDragBoundary=".container" style="background-color: red; margin:10px">
-            <div cdkDragHandle style="background-color: blue;">QWEr</div>
-            DOCK 2
-          </div>
-
-
-        </div>
-
-      </div>      
-
-      <div *ngIf="centrals.length > 0" class="content">
+      <!-- Has centrals -->
+      <div *ngIf="stations.length > 0" class="content">
         <h1>Seja bem-vindo</h1>
   
         <p>Esses são seus últimos dados</p>
+
+        <div class="board">
+          <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+
+            <div *ngFor="let station of stations;">
+              <div cdkDrag cdkDragBoundary=".container" style="background-color: #ccc; margin:10px">
+                <div cdkDragHandle style="background-color: #aaa;">Temperatura do solo</div>
+                {{ station.data.soil_datas[0].temperature }} ºC
+              </div>
+            </div>
+
+          </div>
+        </div>  
       </div>
     </div>
-
   </div>
-
 </body>
     

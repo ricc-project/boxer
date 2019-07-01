@@ -28,7 +28,7 @@ export class Requests {
 
 
       //Load Stations
-      loadStations(authToken, relatedCentral){
+      loadStations(authToken, relatedCentral){        
         let stations = [];
         let centrals = [];
     
@@ -38,7 +38,7 @@ export class Requests {
     
         this.http.post(BaseURL + 'stations/', args)
         .subscribe(
-          data => {
+          data => {            
             for (const station of data['stations']) {
               // Filter of stations by central
               if (relatedCentral !== null){
