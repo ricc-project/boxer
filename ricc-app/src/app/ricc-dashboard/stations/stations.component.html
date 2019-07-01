@@ -35,7 +35,7 @@
             <div id="{{ 'station_' + station.name }}" class="collapse" aria-labelledby="station" data-parent="#accordion">
               <div class="card-body">
                 <div class="row justify-content-md-center">
-                  <soil-temperature-card [value]="station.data.soil_datas[0].temperature"></soil-temperature-card>
+                  <soil-humidity-card [moisture1]="station.data.soil_datas[0].moisture1" [moisture2]="station.data.soil_datas[0].moisture2" [moisture3]="station.data.soil_datas[0].moisture3"></soil-humidity-card>
                   <soil-temperature-card [value]="station.data.soil_datas[0].temperature"></soil-temperature-card>
                   <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
                   <air-humidity-card [value]="station.data.air_datas[0].humidity"></air-humidity-card>    

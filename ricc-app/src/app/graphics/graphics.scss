@@ -34,7 +34,7 @@
 
 #unit {
     align-items: baseline;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: thin;
     margin-left: 10px;
 }
@@ -48,10 +48,12 @@
 }
 
 i {
-    height: 100%;
     width: 100%;
     font-size: 8em;
     overflow: hidden;
     color: $green-color;
 }
 
+p {
+    margin: 3px;
+}

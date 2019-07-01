@@ -12,6 +12,7 @@ export class SpeedDirectionCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.direction = this.direction + 225;
   }
 
 }

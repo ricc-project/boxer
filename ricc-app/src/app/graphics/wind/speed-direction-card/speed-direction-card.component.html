@@ -4,13 +4,13 @@
   <div class="d-flex justify-content-end">
     <div class="col-9 card-value">
       <div id="text">
-        <p id="value">{{ direction }}</p>
+        <i class="fas fa-location-arrow" [style.transform]="'rotate('+ direction +'deg)'"></i>
         <p id="unit"> {{ speed }} m/s</p>
       </div>
     </div>
 
     <div class="col-3 card-icon text-right">
-        <i class="fas fa-wind"></i>
+      <i class="fas fa-wind fa-flip-horizontal"></i>
     </div>
   <div>
 </div>

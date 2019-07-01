@@ -1,6 +1,18 @@
 @import '../../../app.component.scss';
 @import '../../graphics.scss';
 
+.card-icon {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#text {
+    margin-top: 23px;
+}
+
 i {
-    transform: rotate(270deg) !important; 
+    font-size: 3.7em;
 }
