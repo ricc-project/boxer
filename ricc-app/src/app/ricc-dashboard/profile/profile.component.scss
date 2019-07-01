@@ -18,3 +18,16 @@
 hr {
     border: 1px solid #5D544D;
 }
+
+.input {
+    margin-left: 25%;
+    padding: 10px;
+    width: 75%;
+}
+
+@media (max-width: 991.98px) { 
+    .input {
+        margin-left: 0%;
+        width: 100%;
+    }
+}

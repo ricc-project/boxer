@@ -7,10 +7,18 @@
         <div class="col border-right">
           <h3>Redefinir senha</h3>
           <form>
-            <input type="text" placeholder="Senha atual"/>
-            <input type="text" placeholder="Nova senha"/>
-            <input type="text" placeholder="Repita a nova senha"/>
+            <div class="input text-left">
+              <input name="current_password" type="password" id="current_password" placeholder="Senha atual" required/>  
+            </div> 
 
+            <div class="input text-left">
+              <input name="password_1" type="password" id="password_1" placeholder="Nova senha" required/>  
+            </div> 
+
+            <div class="input text-left">
+              <input name="password_2" type="password" id="password_2" placeholder="Repita a nova senha" required/>  
+            </div> 
+    
             <button>Atualizar</button>  
           </form>  
         </div>

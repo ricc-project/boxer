@@ -15,3 +15,14 @@
     border-width: 2px !important;
     border-color: #ccc !important;
 }
+
+.input {
+    margin-left: 25%;
+    padding: 10px;
+}
+
+@media (max-width: 991.98px) { 
+    .input {
+        margin-left: 0%;
+    }
+}
