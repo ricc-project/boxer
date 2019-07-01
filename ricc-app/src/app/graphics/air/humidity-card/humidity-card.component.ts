@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-humidity-card',
+  selector: 'air-humidity-card',
   templateUrl: './humidity-card.component.html',
   styleUrls: ['./humidity-card.component.scss']
 })
 export class AirHumidityCardComponent implements OnInit {
-
+  @Input('value') value: number;
+  
   constructor() { }
 
   ngOnInit() {
