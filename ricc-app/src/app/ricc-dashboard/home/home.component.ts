@@ -52,17 +52,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
       
       for (const card of this.cards) {
         const componentFactory = this.resolver.resolveComponentFactory(card.card_type);
-        const componentRef: ComponentRef<card_type> = viewChild[count].createComponent(componentFactory);
+        const componentRef = viewChild[count].createComponent(componentFactory);
 
-        componentRef.instance.value = card.value;
+        componentRef.instance['value'] = card.value;
         componentRef.changeDetectorRef.detectChanges();
   
         count++;
       }
       
     }, 1000);
-    
-
   }
 
   onSubmit(f: NgForm) {
