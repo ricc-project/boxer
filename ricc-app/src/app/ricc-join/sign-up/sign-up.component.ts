@@ -32,7 +32,11 @@ export class SignUpComponent implements OnInit {
     if ((f.valid) && f.value.password == f.value.cPassword) {
       this.user.username = f.value.email;
       this.user.password = f.value.password;
+      
+      this.user.mac_address = f.value.mac_address;     
   
+      console.log(this.user);
+      
       this.http.post(BaseURL + 'signup/', this.user)
       .subscribe(
         data => {          
