@@ -35,8 +35,6 @@ export class SignUpComponent implements OnInit {
       
       this.user.mac_address = f.value.mac_address;     
   
-      console.log(this.user);
-      
       this.http.post(BaseURL + 'signup/', this.user)
       .subscribe(
         data => {          
