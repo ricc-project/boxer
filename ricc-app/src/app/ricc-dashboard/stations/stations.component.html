@@ -35,7 +35,7 @@
             <div id="{{ 'station_' + station.name }}" class="collapse" aria-labelledby="station" data-parent="#accordion">
               <div class="card-body">
                 <div class="row justify-content-md-center">
-                  <soil-humidity-card [moisture1]="station.data.soil_datas[0].moisture1" [moisture2]="station.data.soil_datas[0].moisture2" [moisture3]="station.data.soil_datas[0].moisture3"></soil-humidity-card>
+                  <soil-humidity-card [value]="{moisture1:station.data.soil_datas[0].moisture1, moisture2:station.data.soil_datas[0].moisture2, moisture3:station.data.soil_datas[0].moisture3}"></soil-humidity-card>
                   <soil-temperature-card [value]="station.data.soil_datas[0].temperature"></soil-temperature-card>
                   <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
                   <air-humidity-card [value]="station.data.air_datas[0].humidity"></air-humidity-card>    
@@ -45,68 +45,8 @@
                   <air-pressure-card [value]="station.data.air_datas[0].pressure"></air-pressure-card>
                   <solar-radiation-card [value]="station.data.solar_datas[0].radiation"></solar-radiation-card>
                   <rain-rainfall-card [value]="station.data.rain_datas[0].rainfall"></rain-rainfall-card>
-                  <wind-speed-direction-card [speed]="station.data.wind_datas[0].speed" [direction]="station.data.wind_datas[0].direction"></wind-speed-direction-card>    
+                  <wind-speed-direction-card [value]="{speed:station.data.wind_datas[0].speed, direction: station.data.wind_datas[0].direction}"></wind-speed-direction-card>    
                 </div>
-
-                <!-- <table class="table table-sm table-bordered table-hover">
-                  <tbody>
-                    <tr>
-                      <td>Umidade solo ponto 01</td>
-                      <td>{{ station.data.soil_datas[0].moisture1 }} %</td>
-                    </tr>
-
-                    <tr>
-                      <td>Umidade solo ponto 02</td>
-                      <td>{{ station.data.soil_datas[0].moisture2 }} %</td>
-                    </tr>
-
-                    <tr>
-                      <td>Umidade solo ponto 03</td>
-                      <td>{{ station.data.soil_datas[0].moisture3 }} %</td>
-                    </tr>
-
-                    <tr>
-                      <td>Temperatura do solo</td>
-                      <td>{{ station.data.soil_datas[0].temperature }} ºC</td>
-                    </tr>
-
-                    <tr>
-                      <td>Temperatura Ambiente</td>
-                      <td>{{ station.data.air_datas[0].temperature }} ºC</td>
-                    </tr>
-
-                    <tr>
-                      <td>Pressão atmosférica</td>
-                      <td>{{ station.data.air_datas[0].temperature }} hPa</td>
-                    </tr>
-  
-                    <tr>
-                      <td>Umidade relativa do ar</td>
-                      <td>{{ station.data.air_datas[0].humidity }} %</td>
-                    </tr>
-  
-                    <tr>
-                      <td>Radiação Solar</td>
-                      <td>{{ station.data.solar_datas[0].radiation }}  kJ/m²</td>
-                    </tr>
-  
-                    <tr>
-                      <td>Velocidade do vento</td>
-                      <td>{{ station.data.wind_datas[0].speed }}  m/s</td>
-                    </tr>
-  
-                    <tr>
-                      <td>Direção do vento</td>
-                      <td>{{ station.data.wind_datas[0].direction }} </td>
-                    </tr>
-  
-                    <tr>
-                      <td>Pluviosidade</td>
-                      <td>{{ station.data.rain_datas[0].rainfall }} mm</td>
-                    </tr>
-
-                  </tbody>
-                </table> -->
               </div>
             </div>
           </div>

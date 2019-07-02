@@ -6,13 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./speed-direction-card.component.scss']
 })
 export class SpeedDirectionCardComponent implements OnInit {
-  @Input('speed') speed: number;
-  @Input('direction') direction: number; 
+  @Input('value') value: {speed: number, direction:number};
+  speed: number;
+  direction: number; 
 
   constructor() { }
 
   ngOnInit() {
-    this.direction = this.direction + 225;
+    this.speed = this.value.speed;
+    this.direction = this.value.direction + 225;
   }
 
 }
