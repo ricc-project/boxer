@@ -28,9 +28,11 @@
 
 
 
-        <div class="board">
+        <div class="row board text-center">
           <div *ngFor = "let card of cards">
-            <ng-template #cardView></ng-template>
+            <div class="col" style="background-color: red;">
+              <ng-template #cardView></ng-template>
+            </div>
           </div>
         </div>  
 

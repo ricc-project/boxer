@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SpeedDirectionCardComponent implements OnInit {
   @Input('value') value: {speed: number, direction:number};
+  @Input('central') central: string;
+  @Input('station') station: string;
   speed: number;
   direction: number; 
 

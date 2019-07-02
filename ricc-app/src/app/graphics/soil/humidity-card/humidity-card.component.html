@@ -7,6 +7,8 @@
         <p id="unit"> 10cm - {{ moisture1}} % </p>
         <p id="unit"> 30cm - {{ moisture2}} % </p>
         <p id="unit"> 50cm - {{ moisture3}} % </p>
+        <div *ngIf="station" class="subtitle">Estação: {{ station }}</div>
+        <div *ngIf="central" class="subtitle">{{ central }}</div>
       </div>
     </div>
 

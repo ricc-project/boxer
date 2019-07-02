@@ -1,11 +1,15 @@
 <div class="card-body">
-  <div class="card-title">Vento</div>
+  <div class="card-title">
+    Vento
+  </div>
 
   <div class="d-flex justify-content-end">
     <div class="col-9 card-value">
       <div id="text">
         <i class="fas fa-location-arrow" [style.transform]="'rotate('+ direction +'deg)'"></i>
         <p id="unit"> {{ speed }} m/s</p>
+        <div *ngIf="station" class="subtitle">Estação: {{ station }}</div>
+        <div *ngIf="central" class="subtitle">{{ central }}</div>
       </div>
     </div>
 

@@ -5,6 +5,8 @@
     <div class="col-9 card-value">
       <div id="text">
         <span id="value">{{ value }}</span> <span id="unit">mm</span>
+        <div *ngIf="station" class="subtitle">Estação: {{ station }}</div>
+        <div *ngIf="central" class="subtitle">{{ central }}</div>  
       </div>
     </div>
 
