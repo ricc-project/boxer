@@ -2,6 +2,7 @@
 
 body {
     background-color: #67615B;
+    color: $second-font-color;
 }
 
 .wrapper {
@@ -22,6 +23,7 @@ body {
 .input {
     margin-left: 25%;
     padding: 10px;
+    color: $primary-font-color;
 }
 
 @media (max-width: 991.98px) { 

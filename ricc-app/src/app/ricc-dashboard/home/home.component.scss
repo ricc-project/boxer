@@ -2,6 +2,7 @@
 
 body {
   background-color: #67615B;
+  color: $second-font-color;
 }
 
 .wrapper {
@@ -10,7 +11,7 @@ body {
 
 .setup-option p{
     font-size: 1.2em;
-    color: $primary-font-color;
+
 }
 
 #setup-icon{
@@ -19,5 +20,6 @@ body {
 }
 
 .card-view{
-border-radius: 100px;
+    border-radius: 100px;
+    color: $primary-font-color;
 }
