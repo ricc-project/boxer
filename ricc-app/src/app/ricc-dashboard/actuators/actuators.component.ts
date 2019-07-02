@@ -42,14 +42,11 @@ export class ActuatorsComponent implements OnInit {
       central: central,
       auth_token: this.authToken
     };  
-    
-    console.log("asdf", message);
   
     this.http.post(BaseURL + 'actuator/switch/', message)
     .subscribe(
       data => {
-        console.log("Alterou", data);
-        
+        console.log("Alterou", data);        
       }, 
       err => {
         console.log(err);

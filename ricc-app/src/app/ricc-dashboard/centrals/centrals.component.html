@@ -37,7 +37,7 @@
           <div class="col">
             <span>
               <label class="switch">
-                <input type="checkbox" [checked]="central.automatic_irrigation">
+                <input type="checkbox" [checked]="central.automatic_irrigation" (click)="switchAutomaticIrrigation(central.mac_address)">
                 <span class="slider round"></span>
               </label>
             </span>

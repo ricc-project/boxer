@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { Central } from '../../models/central';
 import { Requests } from '../../utils/requests/requests'
 import { HttpClient } from '@angular/common/http';
-
+import { BaseURL } from '../../models/baseUrl';
 
 @Component({
   selector: 'app-centrals',
@@ -28,7 +28,24 @@ export class CentralsComponent implements OnInit {
     }else{
       this.centrals = this.requests.loadCentrals(this.authToken);
     }
+  }
 
-
+  switchAutomaticIrrigation(central){
+    let message = {
+      central: central,
+      auth_token: this.authToken
+    };  
+  
+    this.http.post(BaseURL + 'central/switch/', message)
+    .subscribe(
+      data => {
+        console.log("Alterou", data);
+        
+      }, 
+      err => {
+        console.log(err, "Um erro inesperado aconteceu!");
+      }
+    ); 
+  
   }
 }
