@@ -1,9 +1,13 @@
 import { BaseURL } from '../../models/baseUrl';
 import { HttpClient } from '@angular/common/http';
-
+import { GraphComponent } from '../../models/graph-types';
 
 export class Requests {
-    constructor(private http: HttpClient) { }
+    graphComponent : GraphComponent;
+
+    constructor(private http: HttpClient) {
+      this.graphComponent = new GraphComponent;
+     }
 
     // Load centrals
     loadCentrals(authToken){
@@ -174,4 +178,84 @@ export class Requests {
     
         return result_actuators;
       }
+
+    // Load centrals
+    loadCards(authToken){
+      let cards = []
+      let args = {auth_token: authToken};
+  
+      this.http.post(BaseURL + 'card/get/', args)
+      .subscribe(
+        data => {
+          for (const card of data['cards']) {
+            let c = this.graphComponent.get(card.card_type);
+            c.central = card.central;
+            c.station = card.station;
+            cards.push(c);
+          }
+          this.getMeasure(authToken, cards)
+        }, 
+        err => {
+          console.log("Um erro inesperado aconteceu!");
+        }
+      );
+      return cards;
+    }
+
+    // Get single last measure
+    getMeasure(authToken, cards){
+      let result = []
+      for (const card of cards) {
+        
+        let args = {
+          auth_token : authToken,
+          central : card.central,
+          station : card.station,
+          filters : card.filter
+        };
+
+        this.http.post(BaseURL + 'measure/last/', args)
+        .subscribe(
+          data => {
+            let value = data['value'];
+            card.value = value;
+            result.push(card);            
+          }, 
+          err => {
+            console.log("Um erro inesperado aconteceu!", err);
+          }
+        );
+      }
+
+      return result;
+    }
+
+
+    // Get single last measure
+    addNewCard(authToken, card){
+      let result = false;
+
+      let args = {
+        auth_token : authToken,
+        central : card.central,
+        station : card.station,
+        card_type : card.name,
+        filters : card.filter
+      };
+
+        this.http.post(BaseURL + 'card/save/', args)
+        .subscribe(
+          data => {
+            console.log(data);
+            if(data['status'] == "beautiful"){
+              result = true;
+            } 
+          }, 
+          err => {
+            console.log("Um erro inesperado aconteceu!", err);
+          }
+        );
+
+    }
+
 }
