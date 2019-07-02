@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       for (const card of this.cards) {
         const componentFactory = this.resolver.resolveComponentFactory(card.card_type);
         const componentRef = viewChild[count].createComponent(componentFactory);
-
+                
         componentRef.instance['value'] = card.value;
         componentRef.changeDetectorRef.detectChanges();
   
