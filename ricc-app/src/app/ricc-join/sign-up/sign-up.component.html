@@ -26,11 +26,11 @@
         </div>
 
         <div class="input text-left">
-          <input name="ricc-code" type="text" id="ricc-code" placeholder="Seu código RICC" 
-            [(ngModel)]="user.riccCode" #riccCode="ngModel" required/>
+          <input name="mac_address" type="text" id="mac_address" placeholder="Seu código RICC" 
+            [(ngModel)]="user.mac_address" #mac_address="ngModel" required/>
         
-          <div *ngIf="riccCode.invalid && (riccCode.dirty || riccCode.touched)">
-            <div *ngIf="riccCode.errors.required" class="text-danger">
+          <div *ngIf="mac_address.invalid && (mac_address.dirty || mac_address.touched)">
+            <div *ngIf="mac_address.errors.required" class="text-danger">
               O código RICC é um campo obrigatório.
             </div>
           </div>
