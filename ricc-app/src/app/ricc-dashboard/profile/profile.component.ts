@@ -41,7 +41,8 @@ export class ProfileComponent implements OnInit {
       data => {
         user.name = data['user']['name']
         user.username = data['user']['username']
-        user.ricc_code = data['user']['ricc_code']
+        console.log(data);
+        user.mac_address = data['user']['ricc_code']
         
       }, 
       err => {

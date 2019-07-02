@@ -29,11 +29,11 @@
           </div>
 
           <div class="input text-left">
-            <input name="ricc_code" type="text" id="ricc_code" placeholder="Seu código RICC" 
-              [(ngModel)]="user.ricc_code" #ricc_code="ngModel" required/>
+            <input name="mac_address" type="text" id="mac_address" placeholder="Seu código RICC" 
+              [(ngModel)]="user.mac_address" #mac_address="ngModel" required/>
             
-            <div *ngIf="ricc_code.invalid && (ricc_code.dirty || ricc_code.touched)">
-              <div *ngIf="ricc_code.errors.required" class="text-danger">
+            <div *ngIf="mac_address.invalid && (mac_address.dirty || mac_address.touched)">
+              <div *ngIf="mac_address.errors.required" class="text-danger">
                 Email é um campo obrigatório.
               </div>
             </div>
