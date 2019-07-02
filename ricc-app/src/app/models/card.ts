@@ -1,15 +1,17 @@
 export class Card {
     description: string;
+    station : string;
+    central : string;
     name: string;
     card_type: any;
-    url: string;
-    filter: Array<String>;
+    value: any;
+    filter: Object;
 
-    constructor(url: string, filter: Array<String>, description: string, name: string, card_type: any){
+    constructor(value: any, filter: Object, description: string, name: string, card_type: any){
         this.description = description;
         this.name = name;
         this.card_type = card_type;
-        this.url = url;
+        this.value = value;
         this.filter = filter;
     }
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, QueryList, ViewChild, AfterViewInit, ViewChildren, ComponentRef } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, QueryList, AfterViewInit, ViewChildren, ComponentRef, Type } from '@angular/core';
 import { Router } from "@angular/router";
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { Card } from '../../models/card';
 import { Requests } from '../../utils/requests/requests'
@@ -43,54 +42,37 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.stations = this.requests.loadStations(this.authToken, null);
       this.cards = this.requests.loadCards(this.authToken);
 
-      //FAZER PARA loadCards
-      // this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);
-      // this.cards.push(this.graphComponent.get('last-solar-radiation'));
     }
   }
 
   ngAfterViewInit() {
-    this.authToken = JSON.parse(localStorage.getItem("authToken"));
-    this.cards = this.requests.loadCards(this.authToken);
-    
-    const viewChild = this.viewChilren.toArray();
-    let count = 0;
-    console.log("ASDF", this.cards);
-    
-    for (const card of this.cards) {
-      console.log("here", card);
+    setTimeout(()=>{
+      const viewChild = this.viewChilren.toArray();
+      let count = 0;
       
-      let card_type = this.graphComponent.get(card.card_type);
-      console.log("asdf", card_type);
-      
+      for (const card of this.cards) {
+        const componentFactory = this.resolver.resolveComponentFactory(card.card_type);
+        const componentRef: ComponentRef<card_type> = viewChild[count].createComponent(componentFactory);
 
-      const componentFactory = this.resolver.resolveComponentFactory(card_type);
-      const componentRef: ComponentRef<card_type> = viewChild[count].createComponent(componentFactory);
-
-      //DUMP DATA NO CARD
-      //CHAMADA NO REQUESTS
-
-      componentRef.instance.value = 10;
-      componentRef.changeDetectorRef.detectChanges();
-
-      count++;
-    }
-  }
-
-  // drop(event: CdkDragDrop<string[]>) {
-  //   moveItemInArray(this.items, event.previousIndex, event.currentIndex);
-  // }
-
-  onSubmit(f: NgForm) {
-    if (f.valid){
-      console.log(f.value.cardType);
-      let cardType = this.graphComponent.get(f.value.cardType);
-
-      let message = {
-        auth_token : this.authToken,
-        card_type : cardType
+        componentRef.instance.value = card.value;
+        componentRef.changeDetectorRef.detectChanges();
+  
+        count++;
       }
       
+    }, 1000);
+    
+
+  }
+
+  onSubmit(f: NgForm) {
+    if (f.valid){      
+      let card = this.graphComponent.get(f.value.cardType);
+      card.central = f.value.central;
+      card.station = f.value.station
+      this.requests.addNewCard(this.authToken, card);
+      window.location.reload();
+
     }
   }
 
