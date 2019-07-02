@@ -3,25 +3,17 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-      <div [hidden]="stations.length > 0" class="content-container">
+      <div [hidden]="cards.length > 0" class="content-container">
         <h1>Seja bem-vindo</h1>
 
-        <p>Proceda com a instalação e configuração da sua rede.</p>
-        <p>Após, sinta-se livre para customizar seu painel principal com os widgets que achar necessário</p>
+        <p>Você ainda não cadastrou nenhum cartão ao seu dashboard!</p>
+        <p>Sinta-se livre para customizar seu painel principal com os widgets que achar necessário</p>
 
         <div class="row">
           <div class="col setup-option">
-            <a href="#">
-              <i class="fas fa-cogs" id="setup-icon"></i>
-              <p>Começar configuração</p>
-            </a>
-          </div>
-
-          <div class="col setup-option">
-            <a href="#">
-              <i class="fas fa-plus" id="setup-icon"></i>
-              <p>Adicionar widgets</p>
-            </a>
+            <button type="button" class="btn" data-toggle="modal" data-target="#add-widget">
+              Adicionar novos cartões
+            </button>
           </div>
         </div>
       </div>
@@ -29,7 +21,7 @@
       
 
       <!-- Has centrals -->
-      <div [hidden]="stations.length <= 0" class="content">
+      <div [hidden]="cards.length <= 0" class="content">
         <h1>Seja bem-vindo</h1>
   
         <p>Esses são seus últimos dados</p>
@@ -38,23 +30,61 @@
 
         <div class="board">
           <div *ngFor = "let card of cards">
-            {{ card.name }}
-            <ng-template #parent></ng-template>
+            <ng-template #cardView></ng-template>
           </div>
-
-          <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-
-            <div *ngFor="let station of stations;">
-              <div cdkDrag cdkDragBoundary=".container" style="background-color: #ccc; margin:10px">
-                <div cdkDragHandle style="background-color: #aaa;">Temperatura do solo</div>
-                {{ station.data.soil_datas[0].temperature }} ºC
-              </div>
-            </div>
-
-          </div> -->
         </div>  
+
+
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="add-widget" tabindex="-1" role="dialog" aria-labelledby="addWidget" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adiconar novo widget</h5>
+          </div>
+          <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <label>Tipo do cartão</label>
+              <select [(ngModel)]="cardTypes.description" id="cardType" name="cardType">
+                <option *ngFor="let cardType of cardTypes" [value]="cardType.name">
+                  {{ cardType.description }}
+                </option>
+              </select>
+
+              <div *ngIf="f.value.cardType && f.value.cardType.includes('last')">
+                <label>Central de coleta</label><br>
+                <select [(ngModel)]="centrals.mac_address" id="central" name="central">
+                  <option *ngFor="let central of centrals" [value]="central.mac_address">
+                    {{ central.mac_address }} 
+                  </option>
+                </select>
+
+                <br>
+
+                <label>Estação de coleta</label><br>
+                <select [(ngModel)]="stations.name" id="station" name="station">
+                  <ng-container *ngFor="let station of stations">
+                    <option *ngIf="station.related_central == f.value.central" [value]="station.name">
+                      {{ station.name }} 
+                    </option>
+                  </ng-container>
+                </select>
+
+              </div>
+
+              <br>
+              <button type="submit">Inserir</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </body>
     

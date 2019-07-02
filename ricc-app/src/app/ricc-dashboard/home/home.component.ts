@@ -2,10 +2,12 @@ import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, QueryLis
 import { Router } from "@angular/router";
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
-import { Station } from '../../models/station';
+import { Card } from '../../models/card';
 import { Requests } from '../../utils/requests/requests'
-import { SoilTemperatureCardComponent } from '../../graphics/soil/temperature-card/temperature-card.component';
-import { AirTemperatureCardComponent } from '../../graphics/air/temperature-card/temperature-card.component';
+import { GraphComponent } from '../../models/graph-types';
+import { NgForm } from '@angular/forms';
+import { Station } from '../../models/station';
+import { Central } from '../../models/central';
 
 
 @Component({
@@ -14,22 +16,21 @@ import { AirTemperatureCardComponent } from '../../graphics/air/temperature-card
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  title = 'ricc-app';
   authToken: string;
-  stations: Array<Station>;
-  relatedCentral: string;
   requests: Requests;
-  cards: Array<any>;
+  centrals: Array<Central>;
+  stations: Array<Station>;
+  cards: Array<Card>;
+  cardTypes : Array<Card>;
+  graphComponent : GraphComponent;
+  
 
-  @ViewChildren('parent', {read: ViewContainerRef}) parent: QueryList<ViewContainerRef>;
+  @ViewChildren('cardView', {read: ViewContainerRef}) viewChilren: QueryList<ViewContainerRef>;
 
   constructor(private http: HttpClient, private router: Router, private resolver: ComponentFactoryResolver) {
-    this.requests = new Requests(this.http);
-    this.relatedCentral = null;
-    this.stations = [];
-    this.cards = [SoilTemperatureCardComponent,  AirTemperatureCardComponent]
-    console.log(this.cards);
-     
+    this.requests = new Requests(this.http);    
+    this.cards = []
+    this.graphComponent = new GraphComponent;
   }
 
   ngOnInit() {
@@ -37,20 +38,30 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if(this.authToken == null){
       this.router.navigate(['/login']);
     } else {
-      this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);
-
+      this.cardTypes = this.graphComponent.all();
+      this.centrals = this.requests.loadCentrals(this.authToken);
+      this.stations = this.requests.loadStations(this.authToken, null);
+      
+      //FAZER PARA loadCards
+      // this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);
+      // this.cards.push(this.graphComponent.get('last-solar-radiation'));
     }
   }
 
   ngAfterViewInit() {
-    const p = this.parent.toArray();
+    const viewChild = this.viewChilren.toArray();
     let count = 0;
     
     for (const card of this.cards) {
-      const f = this.resolver.resolveComponentFactory(card);
-      const ref: ComponentRef<card> = p[count].createComponent(f);
-      ref.instance.value = 10;
-      ref.changeDetectorRef.detectChanges();
+      const componentFactory = this.resolver.resolveComponentFactory(card.type);
+      const componentRef: ComponentRef<card.type> = viewChild[count].createComponent(componentFactory);
+
+      //DUMP DATA NO CARD
+      //CHAMADA NO REQUESTS
+
+      componentRef.instance.value = 10;
+      componentRef.changeDetectorRef.detectChanges();
+
       count++;
     }
   }
@@ -58,5 +69,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // drop(event: CdkDragDrop<string[]>) {
   //   moveItemInArray(this.items, event.previousIndex, event.currentIndex);
   // }
+
+  onSubmit(f: NgForm) {
+    if (f.valid){
+      console.log(f.value.cardType);
+      let cardType = this.graphComponent.get(f.value.cardType);
+
+      let message = {
+        auth_token : this.authToken,
+        card_type : cardType
+      }
+      
+    }
+  }
 
 }

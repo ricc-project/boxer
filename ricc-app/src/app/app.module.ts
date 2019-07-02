@@ -69,7 +69,13 @@ import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-ca
   bootstrap: [AppComponent],
   entryComponents: [
     SoilTemperatureCardComponent,
-    AirTemperatureCardComponent
+    SoilHumidityCardComponent,
+    AirTemperatureCardComponent,
+    AirHumidityCardComponent,
+    PressureCardComponent,
+    RadiationCardComponent,
+    SpeedDirectionCardComponent,
+    RainfallCardComponent
   ],
 })
 export class AppModule { }
