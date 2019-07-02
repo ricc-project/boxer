@@ -41,13 +41,11 @@ export class ProfileComponent implements OnInit {
       data => {
         user.name = data['user']['name']
         user.username = data['user']['username']
-        console.log(data);
         user.mac_address = data['user']['ricc_code']
         
       }, 
       err => {
-        console.log("Um erro aconteceu");
-        
+        console.log("Um erro aconteceu");        
       }
     );
     

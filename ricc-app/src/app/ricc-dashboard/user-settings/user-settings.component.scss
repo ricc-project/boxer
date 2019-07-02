@@ -2,16 +2,11 @@
 
 body {
     background-color: #67615B;
+    color: $second-font-color;
 }
 
 .wrapper {
     width: 100%;
-}
-
-.container {
-    margin: 15px;
-    min-height: 100vh;
-    height: 100%;
 }
 
 .border-right {
@@ -22,6 +17,7 @@ body {
 .input {
     margin-left: 25%;
     padding: 10px;
+    color: $primary-font-color;
 }
 
 @media (max-width: 991.98px) { 

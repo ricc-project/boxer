@@ -8,15 +8,9 @@ body {
     width: 100%;
 }
 
-.container {
-    padding-top: 3%;
-    margin: 15px;
-    min-height: 100vh;
-    height: 100%;
-}
-
 #page-title {
     margin-bottom: 3%;
+    color: $second-font-color;
 }
 
 button {
@@ -38,11 +32,20 @@ button i {
     font-weight: 600;
 }
 
+.card {
+    border: 0px;
+}
+
 .card-header {
     padding: 0;
     margin: 0;
+    border-bottom: 1px solid #aa988c;
 }
 
+.card-body {
+    background-color: #67615B;
+    color: $second-font-color;
+}
 
 #title {
     font-weight: 500;
