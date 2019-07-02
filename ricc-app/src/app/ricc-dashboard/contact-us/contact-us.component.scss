@@ -1,5 +1,9 @@
 @import '../../app.component';
 
+body {
+    background-color: #67615B;
+}
+
 .wrapper {
     width: 100%;
 }
@@ -9,7 +13,6 @@
     margin: 15px;
     min-height: 100vh;
     height: 100%;
-    background-color: rgba(187, 187, 187, 0.3);
 }
 
 #page-title {

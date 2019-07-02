@@ -1,25 +1,22 @@
 @import '../../app.component';
 
+body {
+    background-color: #4f4944;
+}
+
 .wrapper {
     width: 100%;
 }
 
-.container {
-    margin: 15px;
-    min-height: 100vh;
-    height: 100%;
-    background-color: rgba(187, 187, 187, 0.3);
-}
-
 .card {
+    background-color: #67615B;
     margin-top: 3%;
 }
 
 .card-header {
     background-color: transparent;
+    border-color: white;
 }
-
-
 
 .centrals-top {
     margin: 0;
