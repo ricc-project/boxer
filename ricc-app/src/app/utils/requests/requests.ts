@@ -174,4 +174,51 @@ export class Requests {
     
         return result_actuators;
       }
+
+    // Load centrals
+    loadCards(authToken){
+      let cards = []
+      let args = {auth_token: authToken};
+  
+      this.http.post(BaseURL + 'card/get/', args)
+      .subscribe(
+        data => {
+          for (const card of data['cards']) {
+            cards.push(card);
+            console.log(card);
+          }
+        }, 
+        err => {
+          console.log("Um erro inesperado aconteceu!");
+
+        }
+      );
+      
+      return cards;
+    }
+
+    // Get single last measure
+    getMeasure(authToken, central, station, filters){
+      let args = {
+        auth_token : authToken,
+        central : central,
+        station : station,
+        filters : filters
+      };
+      let value: any;
+
+      this.http.post(BaseURL + 'measure/last/', args)
+      .subscribe(
+        data => {
+          value = data['value'];
+        }, 
+        err => {
+          console.log("Um erro inesperado aconteceu!");
+
+        }
+      );
+      
+      return value;
+    }
+
 }

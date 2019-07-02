@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.cardTypes = this.graphComponent.all();
       this.centrals = this.requests.loadCentrals(this.authToken);
       this.stations = this.requests.loadStations(this.authToken, null);
-      
+      this.cards = this.requests.loadCards(this.authToken);
+
       //FAZER PARA loadCards
       // this.stations = this.requests.loadStations(this.authToken, this.relatedCentral);
       // this.cards.push(this.graphComponent.get('last-solar-radiation'));
@@ -49,12 +50,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.authToken = JSON.parse(localStorage.getItem("authToken"));
+    this.cards = this.requests.loadCards(this.authToken);
+    
     const viewChild = this.viewChilren.toArray();
     let count = 0;
+    console.log("ASDF", this.cards);
     
     for (const card of this.cards) {
-      const componentFactory = this.resolver.resolveComponentFactory(card.type);
-      const componentRef: ComponentRef<card.type> = viewChild[count].createComponent(componentFactory);
+      console.log("here", card);
+      
+      let card_type = this.graphComponent.get(card.card_type);
+      console.log("asdf", card_type);
+      
+
+      const componentFactory = this.resolver.resolveComponentFactory(card_type);
+      const componentRef: ComponentRef<card_type> = viewChild[count].createComponent(componentFactory);
 
       //DUMP DATA NO CARD
       //CHAMADA NO REQUESTS
