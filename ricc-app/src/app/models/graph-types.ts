@@ -1,4 +1,5 @@
 import { components } from './components';
+import { Card } from './card';
 
 export class GraphComponent{
 
@@ -8,8 +9,9 @@ export class GraphComponent{
         if (component === undefined){
             return null;
         }
-    
-        return component
+        
+        let card = new Card(null, component.filter, component.description, component.name, component.card_type)
+        return card;
     }
 
     all(){
