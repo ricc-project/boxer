@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         componentRef.instance['value'] = card.value;
         componentRef.instance['central'] = card.central;
         componentRef.instance['station'] = card.station;
+        componentRef.instance['title'] = card.description;
 
         componentRef.changeDetectorRef.detectChanges();
   
@@ -72,9 +73,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       let card = this.graphComponent.get(f.value.cardType);
       card.central = f.value.central;
       card.station = f.value.station;        
-      this.requests.addNewCard(this.authToken, card);
-      
-      // window.location.reload();
+      this.requests.addNewCard(this.authToken, card);      
+      window.location.reload();
 
     }
   }

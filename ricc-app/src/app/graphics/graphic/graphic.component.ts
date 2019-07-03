@@ -12,23 +12,17 @@ export class GraphicComponent implements OnInit {
   public lineChartLegend = true;
   
   @Input('value') value: Array<{dataset: {data: Array<number>, label: string}, labels: Array<number>}>;
+  @Input('title') title: String; 
 
   public lineChartOptions: (ChartOptions) = {
     responsive: true,
     scales: {
       // We use this empty structure as a placeholder for dynamic theming.
-      xAxes: [{
-        ticks: {
-          fontColor: 'white'
-        }
-      }],
+      xAxes: [{}],
       yAxes: [
         {
           id: 'y-axis-0',
           position: 'left',
-          ticks: {
-            fontColor: 'white'
-          }
         }
       ]
     }
