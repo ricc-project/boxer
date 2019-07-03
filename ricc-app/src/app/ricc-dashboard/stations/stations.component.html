@@ -10,49 +10,50 @@
     
         <div id="accordion">
           <div class="card" *ngFor="let station of stations;">
-            <div class="card-header" id="{{ station.name + '_header' }}">
-              <button class="btn-link text-left align-content-center" data-toggle="collapse" [attr.data-target]="'#station_' + station.name">
-                <!-- <div class="text-right">
-                  <span class="text-right"><i class="fas fa-eye"></i></span>
-                  <a href="#" class="text-right" id="delete-central">
-                    <i class="text-right text-danger far fa-trash-alt" id="delete-icon"></i>
-                  </a>  
-                </div> -->
+            <div *ngIf="station.data !== undefined">
+              <div class="card-header" id="{{ station.name + '_header' }}">
+                <button class="btn-link text-left align-content-center" data-toggle="collapse" [attr.data-target]="'#station_' + station.name">
+                  <!-- <div class="text-right">
+                    <span class="text-right"><i class="fas fa-eye"></i></span>
+                    <a href="#" class="text-right" id="delete-central">
+                      <i class="text-right text-danger far fa-trash-alt" id="delete-icon"></i>
+                    </a>  
+                  </div> -->
 
-                <span id="title">
-                  <i class="fas fa-broadcast-tower"></i>
-                  Estação {{ station.name }}
+                  <span id="title">
+                    <i class="fas fa-broadcast-tower"></i>
+                    Estação {{ station.name }}
 
-                  <i *ngIf="station.status == true" class="text-success fas fa-circle"></i>
-                  <i *ngIf="station.status == false" class="text-danger fas fa-circle"></i>
+                    <i *ngIf="station.status == true" class="text-success fas fa-circle"></i>
+                    <i *ngIf="station.status == false" class="text-danger fas fa-circle"></i>
+            
+                  </span>
+
+                  <div>
+                    <span id="description">Última atualização: {{ station.data.collected_at }}</span>
+                  </div>
+
+                  </button>
+              </div>
           
-                </span>
+              <div id="{{ 'station_' + station.name }}" class="collapse" aria-labelledby="station" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="row justify-content-center" id="cards-hack">
+                    <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
+                    <soil-humidity-card [value]="{moisture1:station.data.soil_datas[0].moisture1, moisture2:station.data.soil_datas[0].moisture2, moisture3:station.data.soil_datas[0].moisture3}"></soil-humidity-card>
+                    <soil-temperature-card [value]="station.data.soil_datas[0].temperature"></soil-temperature-card>
+                    <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
+                    <air-humidity-card [value]="station.data.air_datas[0].humidity"></air-humidity-card>    
 
-                <div>
-                  <span id="description">Última atualização: {{ station.data.collected_at }}</span>
-                </div>
-
-                </button>
-            </div>
-        
-            <div id="{{ 'station_' + station.name }}" class="collapse" aria-labelledby="station" data-parent="#accordion">
-              <div class="card-body">
-                <div class="row justify-content-center" id="cards-hack">
-                  <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
-                  <soil-humidity-card [value]="{moisture1:station.data.soil_datas[0].moisture1, moisture2:station.data.soil_datas[0].moisture2, moisture3:station.data.soil_datas[0].moisture3}"></soil-humidity-card>
-                  <soil-temperature-card [value]="station.data.soil_datas[0].temperature"></soil-temperature-card>
-                  <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
-                  <air-humidity-card [value]="station.data.air_datas[0].humidity"></air-humidity-card>    
-
-                  <air-pressure-card [value]="station.data.air_datas[0].pressure"></air-pressure-card>
-                  <solar-radiation-card [value]="station.data.solar_datas[0].radiation"></solar-radiation-card>
-                  <wind-speed-direction-card [value]="{speed:station.data.wind_datas[0].speed, direction: station.data.wind_datas[0].direction}"></wind-speed-direction-card>    
-                  <rain-rainfall-card [value]="station.data.rain_datas[0].rainfall"></rain-rainfall-card>
+                    <air-pressure-card [value]="station.data.air_datas[0].pressure"></air-pressure-card>
+                    <solar-radiation-card [value]="station.data.solar_datas[0].radiation"></solar-radiation-card>
+                    <wind-speed-direction-card [value]="{speed:station.data.wind_datas[0].speed, direction: station.data.wind_datas[0].direction}"></wind-speed-direction-card>    
+                    <rain-rainfall-card [value]="station.data.rain_datas[0].rainfall"></rain-rainfall-card>
+                  </div>
                 </div>
               </div>
-            </div>
           </div>
-  
+        </div>
         </div>
 
       </div>

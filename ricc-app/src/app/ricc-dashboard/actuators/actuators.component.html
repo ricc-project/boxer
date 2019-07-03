@@ -11,6 +11,7 @@
   
       <div id="accordion">
         <div class="card" *ngFor="let actuator of actuators;">
+        <div *ngIf="actuator.data !== undefined">
           <div class="card-header" id="{{ actuator.name + '_header' }}">
             <button class="btn-link text-left align-content-center" data-toggle="collapse" [attr.data-target]="'#actuator_' + actuator.name">
               <!-- <div class="text-right">
@@ -57,6 +58,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
