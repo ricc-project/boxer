@@ -67,7 +67,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(f: NgForm) {
-    if (f.valid){      
+    if (f.valid){
+      console.log("valid");
+            
       let card = this.graphComponent.get(f.value.cardType);
       card.central = f.value.central;
       card.station = f.value.station

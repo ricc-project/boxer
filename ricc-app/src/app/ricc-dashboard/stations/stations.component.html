@@ -37,18 +37,17 @@
         
             <div id="{{ 'station_' + station.name }}" class="collapse" aria-labelledby="station" data-parent="#accordion">
               <div class="card-body">
-                <div class="row justify-content-md-center">
+                <div class="row justify-content-center" id="cards-hack">
+                  <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
                   <soil-humidity-card [value]="{moisture1:station.data.soil_datas[0].moisture1, moisture2:station.data.soil_datas[0].moisture2, moisture3:station.data.soil_datas[0].moisture3}"></soil-humidity-card>
                   <soil-temperature-card [value]="station.data.soil_datas[0].temperature"></soil-temperature-card>
                   <air-temperature-card [value]="station.data.air_datas[0].temperature"></air-temperature-card>
                   <air-humidity-card [value]="station.data.air_datas[0].humidity"></air-humidity-card>    
-                </div>
 
-                <div class="row justify-content-md-center">
                   <air-pressure-card [value]="station.data.air_datas[0].pressure"></air-pressure-card>
                   <solar-radiation-card [value]="station.data.solar_datas[0].radiation"></solar-radiation-card>
-                  <rain-rainfall-card [value]="station.data.rain_datas[0].rainfall"></rain-rainfall-card>
                   <wind-speed-direction-card [value]="{speed:station.data.wind_datas[0].speed, direction: station.data.wind_datas[0].direction}"></wind-speed-direction-card>    
+                  <rain-rainfall-card [value]="station.data.rain_datas[0].rainfall"></rain-rainfall-card>
                 </div>
               </div>
             </div>

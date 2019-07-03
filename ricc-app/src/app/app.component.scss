@@ -148,3 +148,14 @@ h2, h6 {
 #h2, #h6 {
     color: $primary-font-color;
 }
+
+@media (max-width: 991.98px) { 
+    #cards-hack {
+        display: inline;
+    }
+
+    .card-body {
+        padding: 3px;
+    }
+    
+}
