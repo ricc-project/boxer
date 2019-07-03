@@ -8,7 +8,6 @@ import { NgForm } from '@angular/forms';
 import { Station } from '../../models/station';
 import { Central } from '../../models/central';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +21,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   cards: Array<Card>;
   cardTypes : Array<Card>;
   graphComponent : GraphComponent;
-  
+  r: Array<any>;
+
 
   @ViewChildren('cardView', {read: ViewContainerRef}) viewChilren: QueryList<ViewContainerRef>;
 
@@ -41,8 +41,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.centrals = this.requests.loadCentrals(this.authToken);
       this.stations = this.requests.loadStations(this.authToken, null);
       this.cards = this.requests.loadCards(this.authToken);
+      this.r = this.requests.getMeasurePeriod();
+      
+
 
     }
+  }
+
+  render(){
+    console.log("R", this.r);
   }
 
   ngAfterViewInit() {
@@ -63,7 +70,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         count++;
       }
       
-    }, 1000);
+      this.render();
+
+    }, 3000);
   }
 
   onSubmit(f: NgForm) {
