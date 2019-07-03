@@ -16,7 +16,7 @@ export class SpeedDirectionCardComponent implements OnInit {
 
   ngOnInit() {
     this.speed = this.value.speed;
-    this.direction = this.value.direction + 225;
+    this.direction = (this.value.direction * -1) - 227 ;
   }
 
 }

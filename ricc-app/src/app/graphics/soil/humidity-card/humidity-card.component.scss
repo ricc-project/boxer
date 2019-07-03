@@ -1,2 +1,9 @@
 @import '../../../app.component.scss';
 @import '../../graphics.scss';
+
+#value {
+    align-items: baseline;
+    font-size: 0.8em;
+    font-weight: thin;
+    margin-left: 4px;
+}
