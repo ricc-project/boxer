@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { PressureCardComponent } from './graphics/air/pressure-card/pressure-car
 import { RadiationCardComponent } from './graphics/solar/radiation-card/radiation-card.component';
 import { SpeedDirectionCardComponent } from './graphics/wind/speed-direction-card/speed-direction-card.component';
 import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-card.component';
+import { GraphicComponent } from './graphics/graphic/graphic.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-ca
     RadiationCardComponent,
     SpeedDirectionCardComponent,
     RainfallCardComponent,
+    GraphicComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-ca
     FormsModule,
     HttpClientModule,
     DragDropModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

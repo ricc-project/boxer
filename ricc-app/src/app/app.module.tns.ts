@@ -24,6 +24,7 @@ import { PressureCardComponent } from './graphics/air/pressure-card/pressure-car
 import { RadiationCardComponent } from './graphics/solar/radiation-card/radiation-card.component';
 import { SpeedDirectionCardComponent } from './graphics/wind/speed-direction-card/speed-direction-card.component';
 import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-card.component';
+import { GraphicComponent } from './graphics/graphic/graphic.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -56,6 +57,7 @@ import { RainfallCardComponent } from './graphics/rain/rainfall-card/rainfall-ca
     RadiationCardComponent,
     SpeedDirectionCardComponent,
     RainfallCardComponent,
+    GraphicComponent,
   ],
   imports: [
     NativeScriptModule,

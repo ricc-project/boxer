@@ -232,6 +232,35 @@ export class Requests {
 
 
     // Get single last measure
+    getMeasurePeriod(){
+        let result = [];
+
+        let args = {
+          auth_token : "0e392c53b8975c5cca475a523f122376ffd0cc3c959d0a8d62ae65f7a639d31d",
+          central : "b8:27:eb:b1:85:67",
+          filters : {category: "soil_datas", measure: "temperature", amount: 3}
+        };
+
+        this.http.post(BaseURL + 'measure/period/', args)
+        .subscribe(
+          data => {
+            for ( const d of data['measures']) {
+              result.push(d)
+            }
+            
+            console.log(data['measures']);
+            
+          }, 
+          err => {
+            console.log("Um erro inesperado aconteceu!", err);
+          }
+        );
+
+
+      return result;
+    }
+
+    // Get single last measure
     addNewCard(authToken, card){
       let result = false;
 
