@@ -135,3 +135,16 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.container {
+    overflow: auto;
+}
+
+h2, h6 {
+    color: $second-font-color;
+    font-weight: 350;
+}
+
+#h2, #h6 {
+    color: $primary-font-color;
+}

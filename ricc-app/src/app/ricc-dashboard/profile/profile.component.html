@@ -3,52 +3,59 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
-        <h1>Suas informações</h1>
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-          <div class="input text-left">
-            <input name="name" type="text" id="name" placeholder="Seu nome" 
-              [(ngModel)]="user.name" #name="ngModel" required/>
-            
-            <div *ngIf="name.invalid && (name.dirty || name.touched)">
-              <div *ngIf="name.errors.required" class="text-danger">
-                Email é um campo obrigatório.
-              </div>
-            </div>
-          </div>
-
-          <div class="input text-left">
-            <input name="username" type="text" id="username" placeholder="E-mail" 
-              [(ngModel)]="user.username" #username="ngModel" required/>
-            
-            <div *ngIf="username.invalid && (username.dirty || username.touched)">
-              <div *ngIf="username.errors.required" class="text-danger">
-                Email é um campo obrigatório.
-              </div>
-            </div>
-          </div>
-
-          <div class="input text-left">
-            <input name="mac_address" type="text" id="mac_address" placeholder="Seu código RICC" 
-              [(ngModel)]="user.mac_address" #mac_address="ngModel" required/>
-            
-            <div *ngIf="mac_address.invalid && (mac_address.dirty || mac_address.touched)">
-              <div *ngIf="mac_address.errors.required" class="text-danger">
-                Email é um campo obrigatório.
-              </div>
-            </div>
-          </div> 
-
-          <button type="submit">Atualizar</button>  
-        </form>
-        
-        <hr>
-
-        <span>
-          Não desejo mais utilizar os serviços da RICC. Quero
-          <a class="text-danger" href="/delete" id="delete-account">apagar minha conta</a>
-        </span>
-
+      <div id="page-title" class="text-left">
+          <h2>Perfil</h2>
       </div>
+      
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="input text-left">
+          <label>Nome:</label>
+          <input name="name" type="text" id="name" placeholder="Seu nome" 
+            [(ngModel)]="user.name" #name="ngModel" required/>
+              
+          <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors.required" class="text-danger">
+              Nome é um campo obrigatório.
+            </div>
+          </div>
+        </div>
+  
+
+        <div class="input text-left">
+          <label>E-mail:</label>
+          <input name="username" type="text" id="username" placeholder="E-mail" 
+            [(ngModel)]="user.username" #username="ngModel" required/>
+              
+          <div *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div *ngIf="username.errors.required" class="text-danger">
+              Email é um campo obrigatório.
+            </div>
+          </div>
+        </div>
+  
+        <div class="input text-left">
+          <label>Código RICC:</label>
+          <input name="mac_address" type="text" id="mac_address" placeholder="Seu código RICC" 
+            [(ngModel)]="user.mac_address" #mac_address="ngModel" required/>
+              
+          <div *ngIf="mac_address.invalid && (mac_address.dirty || mac_address.touched)">
+            <div *ngIf="mac_address.errors.required" class="text-danger">
+              Código RICC é um campo obrigatório.
+            </div>
+          </div>
+        </div> 
+  
+        <button type="submit">Atualizar</button>  
+      </form>
+          
+      <hr>
+  
+      <span>
+        Não desejo mais utilizar os serviços da RICC. Quero
+        <a class="text-danger" href="/delete" id="delete-account">apagar minha conta</a>
+      </span>
+
+    </div>
   </div>
 </body>
     

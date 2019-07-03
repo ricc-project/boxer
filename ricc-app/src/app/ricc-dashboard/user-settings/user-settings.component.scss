@@ -14,6 +14,11 @@ body {
     border-color: #ccc !important;
 }
 
+#page-title {
+    margin-top: 30px;
+    margin-bottom: 3%;
+}
+
 .input {
     margin-left: 25%;
     padding: 10px;
@@ -24,4 +29,8 @@ body {
     .input {
         margin-left: 0%;
     }
+}
+
+.input label{
+    color: $second-font-color;
 }

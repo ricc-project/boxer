@@ -5,21 +5,40 @@ body {
   color: $second-font-color;
 }
 
+#page-title {
+    margin-top: 30px;
+    margin-bottom: 3%;
+}
+
 .wrapper {
     width: 100%;
 }
 
-.setup-option p{
-    font-size: 1.2em;
-
-}
-
-#setup-icon{
-    font-size: 4em;
-    color: $green-color;
+p{
+    font-size: 1.1em;
+    margin: 0px;
 }
 
 .card-view{
     border-radius: 100px;
     color: $primary-font-color;
+}
+
+#btn-card {
+    background: transparent;
+    border-radius: 0px;
+}
+
+.modal {
+    color: $primary-font-color;
+}
+
+.modal-footer {
+    padding: 0px;
+    margin: 10px;
+    border: 0px;
+}
+
+#btn-modal {
+    margin: 0px;
 }
