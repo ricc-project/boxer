@@ -65,24 +65,26 @@
                 </select>
               </div>
 
-              <div *ngIf="f.value.cardType && f.value.cardType.includes('last')">
+              <div>
                 <label>Central de coleta:</label>
                 <select class="form-control" [(ngModel)]="centrals.mac_address" id="central" name="central" required>
                   <option *ngFor="let central of centrals" [value]="central.mac_address">
                     {{ central.mac_address }} 
                   </option>
                 </select>
+              </div>
+              
+              <br>
 
-                <br>
-
-                <label>Estação de coleta:</label>
-                <select class="form-control" [(ngModel)]="stations.name" id="station" name="station">
-                  <ng-container *ngFor="let station of stations">
-                    <option *ngIf="station.related_central == f.value.central" [value]="station.name">
-                      {{ station.name }} 
-                    </option>
-                  </ng-container>
-                </select>
+                <div *ngIf="f.value.cardType && f.value.cardType.includes('last')">
+                  <label>Estação de coleta:</label>
+                  <select class="form-control" [(ngModel)]="stations.name" id="station" name="station">
+                    <ng-container *ngFor="let station of stations">
+                      <option *ngIf="station.related_central == f.value.central" [value]="station.name">
+                        {{ station.name }} 
+                      </option>
+                    </ng-container>
+                  </select>
 
               </div>
 

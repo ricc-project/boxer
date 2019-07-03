@@ -206,26 +206,28 @@ export class Requests {
     getMeasure(authToken, cards){
       let result = []
       for (const card of cards) {
-        
-        let args = {
-          auth_token : authToken,
-          central : card.central,
-          station : card.station,
-          filters : card.filter
-        };
-
-        this.http.post(BaseURL + 'measure/last/', args)
-        .subscribe(
-          data => {
-            let value = data['value'];
-            card.value = value;
-            result.push(card);            
-          }, 
-          err => {
-            console.log("Um erro inesperado aconteceu!", err);
-          }
-        );
+        if (card.station !== ""){
+          let args = {
+            auth_token : authToken,
+            central : card.central,
+            station : card.station,
+            filters : card.filter
+          };
+  
+          this.http.post(BaseURL + 'measure/last/', args)
+          .subscribe(
+            data => {
+              let value = data['value'];
+              card.value = value;
+              result.push(card);            
+            }, 
+            err => {
+              console.log("Um erro inesperado aconteceu!", err);
+            }
+          );
+        }
       }
+
 
       return result;
     }
@@ -272,9 +274,16 @@ export class Requests {
         filters : card.filter
       };
 
-      
+      let url = 'card/save/';
 
-        this.http.post(BaseURL + 'card/save/', args)
+      console.log(card.station);
+      
+      if(card.station == undefined){
+        console.log("asdf");
+        url = 'card2/save/';
+      }
+
+        this.http.post(BaseURL + url, args)
         .subscribe(
           data => {
             console.log("ASDF",data);
