@@ -81,10 +81,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
             
       let card = this.graphComponent.get(f.value.cardType);
       card.central = f.value.central;
-      card.station = f.value.station
-      console.log(card);
-      
+      card.station = f.value.station;        
       this.requests.addNewCard(this.authToken, card);
+      
       // window.location.reload();
 
     }

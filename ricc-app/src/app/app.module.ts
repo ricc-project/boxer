@@ -79,7 +79,8 @@ import { GraphicComponent } from './graphics/graphic/graphic.component';
     PressureCardComponent,
     RadiationCardComponent,
     SpeedDirectionCardComponent,
-    RainfallCardComponent
+    RainfallCardComponent,
+    GraphicComponent,
   ],
 })
 export class AppModule { }
