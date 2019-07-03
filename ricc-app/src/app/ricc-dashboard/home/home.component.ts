@@ -41,15 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.centrals = this.requests.loadCentrals(this.authToken);
       this.stations = this.requests.loadStations(this.authToken, null);
       this.cards = this.requests.loadCards(this.authToken);
-      this.r = this.requests.getMeasurePeriod();
-      
-
-
     }
-  }
-
-  render(){
-    console.log("R", this.r);
   }
 
   ngAfterViewInit() {
@@ -69,10 +61,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
         count++;
       }
-      
-      this.render();
 
-    }, 3000);
+    }, 1000);
   }
 
   onSubmit(f: NgForm) {

@@ -27,5 +27,5 @@ export const components = [
 
     new Card(null, {category:"wind_datas", measure:"speed"}, "Velocidade e direção do vento- Última coleta", 'last-wind-speed-dir', SpeedDirectionCardComponent, "last"),
 
-    new Card(null, {category:"air_datas", measure:"temperature", amount: ""}, "Temperatura do ar - Gráfico de linha", 'graph-wind-speed-dir', GraphicComponent, "graph")
+    new Card(null, {category:"air_datas", measure:"temperature", amount: 3}, "Temperatura do ar - Gráfico de linha", 'graph-wind-speed-dir', GraphicComponent, "graph")
 ]
