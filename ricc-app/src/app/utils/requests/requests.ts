@@ -272,10 +272,12 @@ export class Requests {
         filters : card.filter
       };
 
+      
+
         this.http.post(BaseURL + 'card/save/', args)
         .subscribe(
           data => {
-            console.log(data);
+            console.log("ASDF",data);
             if(data['status'] == "beautiful"){
               result = true;
             } 
