@@ -3,21 +3,22 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
+      <div id="page-title" class="text-left">
+          <h2>Centrais</h2>
+      </div>
 
       <div class="card" *ngFor="let central of centrals;">
-        <div class="card-header centrals-top d-flex align-items-center justify-content-between">
-          <div>
-            <span id="centrals-title">Central <span id="centrals-name">{{ central.mac_address }}</span></span> 
-          </div>
-
-          <div>  
+        <div class="card-header centrals-top text-left">          
+          <!-- <div class="text-right">  
             <a href="#" class="text-right" id="edit-central">
               <i class="text-right fas fa-pen" id="edit-icon"></i>
             </a>
             <a href="#" class="text-right" id="delete-central">
               <i class="text-right text-danger far fa-trash-alt" id="delete-icon"></i>
             </a>
-          </div>  
+          </div>   -->
+
+          <span id="centrals-title">Central <span id="centrals-name">{{ central.mac_address }}</span></span> 
         </div>
 
         <div class="card-body row centrals-content">

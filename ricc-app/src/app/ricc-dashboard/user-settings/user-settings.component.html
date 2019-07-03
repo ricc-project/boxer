@@ -3,19 +3,26 @@
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
+      <div id="page-title" class="text-left">
+          <h2>Ajustes</h2>
+      </div>
+  
       <div class="row">
         <div class="col border-right">
           <h3>Redefinir senha</h3>
           <form>
             <div class="input text-left">
+              <label>Senha atual:</label>
               <input name="current_password" type="password" id="current_password" placeholder="Senha atual" required/>  
             </div> 
 
             <div class="input text-left">
+              <label>Nova senha:</label>
               <input name="password_1" type="password" id="password_1" placeholder="Nova senha" required/>  
             </div> 
 
             <div class="input text-left">
+              <label>Repita nova senha:</label>
               <input name="password_2" type="password" id="password_2" placeholder="Repita a nova senha" required/>  
             </div> 
     

@@ -2,31 +2,26 @@
   <div class="d-flex">  
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
-    <div class="text-center">
+    <div class="container text-center">
       <div [hidden]="cards.length > 0">
-        <h1>Seja bem-vindo</h1>
+        <div id="page-title">
+            <h2>Pronto para uma nova experiência?</h2>
+        </div>
 
         <p>Você ainda não cadastrou nenhum cartão ao seu dashboard!</p>
         <p>Sinta-se livre para customizar seu painel principal com os widgets que achar necessário</p>
 
-        <div class="row">
-          <div class="col setup-option">
-            <button type="button" class="btn" data-toggle="modal" data-target="#add-widget">
-              Adicionar novos cartões
-            </button>
-          </div>
-        </div>
-      </div>
+        <button type="button" id="btn-card" data-toggle="modal" data-target="#add-widget">
+          <i class="fas fa-plus"></i> cartões
+        </button>
 
-      
+      </div>
 
       <!-- Has centrals -->
       <div [hidden]="cards.length <= 0" class="content">
         <h1>Seja bem-vindo</h1>
         
         <p>Esses são seus últimos dados</p>
-
-
 
         <div class="row board justify-content-center">
           <div *ngFor = "let card of cards" >
@@ -36,13 +31,9 @@
           </div>
         </div>  
 
-        <div class="row">
-          <div class="col setup-option">
-            <button type="button" class="btn" data-toggle="modal" data-target="#add-widget">
-              Adicionar novos cartões
-            </button>
-          </div>
-        </div>
+        <button type="button" id="btn-card" data-toggle="modal" data-target="#add-widget">
+          <i class="fas fa-plus"></i> cartões
+        </button>
 
       </div>
     </div>
@@ -52,20 +43,22 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Adiconar novo widget</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Adicionar novo cartão</h5>
           </div>
           <div class="modal-body">
             <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-              <label>Tipo do cartão</label>
-              <select [(ngModel)]="cardTypes.description" id="cardType" name="cardType">
-                <option *ngFor="let cardType of cardTypes" [value]="cardType.name">
-                  {{ cardType.description }}
-                </option>
-              </select>
+              <div class="form-group">
+                <label>Tipo do cartão:</label>
+                <select class="form-control" [(ngModel)]="cardTypes.description" id="cardType" name="cardType">
+                  <option *ngFor="let cardType of cardTypes" [value]="cardType.name">
+                    {{ cardType.description }}
+                  </option>
+                </select>
+              </div>
 
               <div *ngIf="f.value.cardType && f.value.cardType.includes('last')">
-                <label>Central de coleta</label><br>
-                <select [(ngModel)]="centrals.mac_address" id="central" name="central">
+                <label>Central de coleta:</label>
+                <select class="form-control" [(ngModel)]="centrals.mac_address" id="central" name="central">
                   <option *ngFor="let central of centrals" [value]="central.mac_address">
                     {{ central.mac_address }} 
                   </option>
@@ -73,8 +66,8 @@
 
                 <br>
 
-                <label>Estação de coleta</label><br>
-                <select [(ngModel)]="stations.name" id="station" name="station">
+                <label>Estação de coleta:</label>
+                <select class="form-control" [(ngModel)]="stations.name" id="station" name="station">
                   <ng-container *ngFor="let station of stations">
                     <option *ngIf="station.related_central == f.value.central" [value]="station.name">
                       {{ station.name }} 
@@ -84,8 +77,9 @@
 
               </div>
 
-              <br>
-              <button type="submit">Inserir</button>
+              <div class="modal-footer">
+                <button id="btn-modal" type="submit">Inserir</button>
+              </div>  
             </form>
 
           </div>
