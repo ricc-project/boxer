@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartOptions, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 
@@ -11,40 +11,56 @@ export class GraphicComponent implements OnInit {
   public lineChartType = 'line';
   public lineChartLegend = true;
   
+  @Input('value') value: Array<{dataset: {data: Array<number>, label: string}, labels: Array<number>}>;
+  @Input('title') title: String; 
+
   public lineChartOptions: (ChartOptions) = {
     responsive: true,
     scales: {
       // We use this empty structure as a placeholder for dynamic theming.
-      xAxes: [{
-        ticks: {
-          fontColor: 'white'
-        }
-      }],
+      xAxes: [{}],
       yAxes: [
         {
           id: 'y-axis-0',
           position: 'left',
-          ticks: {
-            fontColor: 'white'
-          }
         }
       ]
     }
   };
 
 
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    { data: [180, 480, 770, 90, 1000, 270, 400], label: 'Series C'}
-  ];
+  lineChartData: ChartDataSets[] =  [];
 
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  lineChartLabels: Label[] = [];
 
 
   constructor() { }
 
   ngOnInit() {
+    console.log("O VALOR", this.value);
+    let labels = []
+
+    for (let v of this.value){
+      console.log(v['dataset']);
+      this.lineChartData.push(v['dataset'])
+      
+      for (let l of v['labels']){
+        if(labels.indexOf(l) == -1 ){
+          labels.push(l);            
+        }
+      }
+
+      // labels.push(...v['labels'])
+    }
+    
+    console.log("A", labels);
+    
+    this.lineChartLabels = labels;
+    console.log(this.lineChartLabels);
+     
+    // this.lineChartData = this.value['dataset'];
+    // this.lineChartLabels = this.value['labels']
+    
   }
 
 }

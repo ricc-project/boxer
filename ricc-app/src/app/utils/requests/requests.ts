@@ -249,16 +249,29 @@ export class Requests {
             for ( const d of data['measures']) {
               result.push(d)
             }
-            
-            console.log(data['measures']);
-            
-          }, 
-          err => {
-            console.log("Um erro inesperado aconteceu!", err);
-          }
-        );
+          );
+        }else{
+          let args = {
+            auth_token : authToken,
+            central : card.central,
+            filters : card.filter
+          };
+  
+          this.http.post(BaseURL + 'measure/period/', args)
+          .subscribe(
+            data => {
+              card.value = data;
+              result.push(card);
+              console.log(data);
+              
+            }, 
+            err => {
+              console.log("Um erro inesperado aconteceu!", err);
+            }
+          );
 
-
+        }
+      }
       return result;
     }
 

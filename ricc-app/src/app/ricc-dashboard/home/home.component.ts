@@ -41,15 +41,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.centrals = this.requests.loadCentrals(this.authToken);
       this.stations = this.requests.loadStations(this.authToken, null);
       this.cards = this.requests.loadCards(this.authToken);
-      this.r = this.requests.getMeasurePeriod();
-      
-
-
     }
-  }
-
-  render(){
-    console.log("R", this.r);
   }
 
   ngAfterViewInit() {
@@ -64,15 +56,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
         componentRef.instance['value'] = card.value;
         componentRef.instance['central'] = card.central;
         componentRef.instance['station'] = card.station;
+        componentRef.instance['title'] = card.description;
 
         componentRef.changeDetectorRef.detectChanges();
   
         count++;
       }
-      
-      this.render();
 
-    }, 3000);
+    }, 1000);
   }
 
   onSubmit(f: NgForm) {
@@ -82,9 +73,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       let card = this.graphComponent.get(f.value.cardType);
       card.central = f.value.central;
       card.station = f.value.station;        
-      this.requests.addNewCard(this.authToken, card);
-      
-      // window.location.reload();
+      this.requests.addNewCard(this.authToken, card);      
+      window.location.reload();
 
     }
   }
