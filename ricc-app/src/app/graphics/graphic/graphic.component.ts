@@ -37,30 +37,44 @@ export class GraphicComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("O VALOR", this.value);
-    let labels = []
-
-    for (let v of this.value){
-      console.log(v['dataset']);
-      this.lineChartData.push(v['dataset'])
+    if (this.value !== null) {
+      console.log("VALUE", this.value);
       
-      for (let l of v['labels']){
-        if(labels.indexOf(l) == -1 ){
-          labels.push(l);            
+      let labels = []
+      
+      for (let value of this.value){
+        for (const label of value['labels']) {
+          if(labels.indexOf(label) == -1 ){
+            labels.push(label);            
+          }        
         }
       }
+      
+      labels.sort()
 
-      // labels.push(...v['labels'])
-    }
-    
-    console.log("A", labels);
-    
-    this.lineChartLabels = labels;
-    console.log(this.lineChartLabels);
-     
-    // this.lineChartData = this.value['dataset'];
-    // this.lineChartLabels = this.value['labels']
-    
+      for (let value of this.value){
+        let responseDataset = value['dataset']
+        let dataset = {data: new Array(labels.length).fill(null), label: "Estação " + responseDataset['label']}
+
+        for (const data of responseDataset['data']) {
+          let value = data['value'];        
+          let time = data['time']
+          
+          let index = labels.indexOf(time)
+          dataset.data[index] = value
+        }
+        this.lineChartData.push(dataset)
+
+        
+      }
+
+      //CONVERT TO LABEL READABLE
+      let chartLabels = []
+      for (const label of labels) {
+        let labelTime = new Date(label)
+        
+        this.lineChartLabels.push(labelTime.toLocaleString().substr(11, 8));
+      }
+    }     
   }
-
 }

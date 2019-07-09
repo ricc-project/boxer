@@ -50,26 +50,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
       let count = 0;
       
       for (const card of this.cards) {
-        const componentFactory = this.resolver.resolveComponentFactory(card.card_type);
+        const componentFactory = this.resolver.resolveComponentFactory(card.card_type);        
         const componentRef = viewChild[count].createComponent(componentFactory);
-                
-        componentRef.instance['value'] = card.value;
+
+        componentRef.instance['value'] = card.value;        
         componentRef.instance['central'] = card.central;
         componentRef.instance['station'] = card.station;
         componentRef.instance['title'] = card.description;
-
         componentRef.changeDetectorRef.detectChanges();
   
         count++;
       }
 
-    }, 1000);
+    }, 5000);
   }
 
   onSubmit(f: NgForm) {
-    if (f.valid){
-      console.log("valid");
-            
+    if (f.valid){            
       let card = this.graphComponent.get(f.value.cardType);
       card.central = f.value.central;
       card.station = f.value.station;        

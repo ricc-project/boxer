@@ -181,6 +181,7 @@ export class Requests {
 
     // Load centrals
     loadCards(authToken){
+      
       let cards = []
       let args = {auth_token: authToken};
   
@@ -237,8 +238,6 @@ export class Requests {
             data => {
               card.value = data;
               result.push(card);
-              console.log(data);
-              
             }, 
             err => {
               console.log("Um erro inesperado aconteceu!", err);

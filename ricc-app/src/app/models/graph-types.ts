@@ -10,7 +10,7 @@ export class GraphComponent{
             return null;
         }
         
-        let card = new Card(null, component.filter, component.description, component.name, component.card_type)
+        let card = new Card(null, component.filter, component.description, component.name, component.card_type, component.type)
         return card;
     }
 

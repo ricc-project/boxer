@@ -1,1 +1,1 @@
-export const BaseURL = "http://snowball.lappis.rocks/";
+export const BaseURL = "http://localhost:8000/";

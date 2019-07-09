@@ -27,7 +27,23 @@ export const components = [
 
     new Card(null, {category:"wind_datas", measure:"speed"}, "Velocidade e direção do vento- Última coleta", 'last-wind-speed-dir', SpeedDirectionCardComponent, "last"),
 
+    //GRAPHS
+    new Card(null, {category:"soil_datas", measure:"temperature", amount: 3}, "Temperatura do solo - Gráfico de linha", 'graph-soil-temperature', GraphicComponent, "graph"),
+
+    new Card(null, {category:"soil_datas", measure:"moisture1", amount: 3}, "Umidade do solo - Gráfico de linha", 'graph-soil-humidity', GraphicComponent, "graph"),
+
+    new Card(null, {category:"air_datas", measure:"temperature", amount: 3}, "Temperatura do ar - Gráfico de linha", 'graph-air-temperature', GraphicComponent, "graph"),
+
+    new Card(null, {category:"air_datas", measure:"humidity", amount: 3}, "Umidade do ar - Gráfico de linha", 'graph-air-humidity', GraphicComponent, "graph"),
+    
     new Card(null, {category:"air_datas", measure:"pressure", amount: 3}, "Pressão Atmosférica - Gráfico de linha", 'graph-air-pressure', GraphicComponent, "graph"),
 
-    new Card(null, {category:"air_datas", measure:"temperature", amount: 3}, "Temperatura do ar - Gráfico de linha", 'graph-air-temperature', GraphicComponent, "graph")
+    new Card(null, {category:"solar_datas", measure:"radiation", amount: 3}, "Radiação solar - Gráfico de linha", 'graph-solar-radiation', GraphicComponent, "graph"),
+    
+    new Card(null, {category:"rain_datas", measure:"rainfall", amount: 3}, "Pluviosidade - Gráfico de linha", 'graph-rain-rainfall', GraphicComponent, "graph"),
+
+    new Card(null, {category:"wind_datas", measure:"speed", amount: 3}, "Velocidade do vento- Gráfico de linha", 'graph-wind-speed-dir', GraphicComponent, "graph"),
+
+    new Card(null, {category:"wind_datas", measure:"direction", amount: 3}, "Direção do vento- Gráfico de linha", 'graph-wind-direction-dir', GraphicComponent, "graph"),
+
 ]
