@@ -30,9 +30,9 @@
         
               </span>
 
-              <div>
+              <!-- <div>
                 <span id="description">Última atualização: {{ actuator.data.collected_at }}</span>
-              </div>
+              </div> -->
 
             </button>
           </div>
@@ -40,19 +40,18 @@
           <div id="{{ 'actuator_' + actuator.name }}" class="collapse" aria-labelledby="actuator" data-parent="#accordion">
             <div class="card-body">
               <div class="row">
-                <div class="col border-right">
+                <!-- <div class="col border-right">
                   <h5>Último uso</h5>
                   <h3>{{ actuator.data.last_active }}</h3> 
                 </div>
-          
+           -->  
+                <div class="col"><h4>Acionamento manual</h4></div>
                 <div class="col">
-                  <h4>Acionamento manual</h4>
                   <span>
                     <label class="switch">
                       <input type="checkbox" (click)="switchActuator(actuator.related_central)">
                       <span class="slider round"></span>
                     </label>
-                    <p>{{ changeStatusText }}</p>
                   </span>
                 </div>
               </div>
