@@ -24,9 +24,12 @@
         </div>
         <hr>
 
-        <h3> {{loadingText}} </h3>
-        <div class="row board justify-content-center">
-          <div *ngFor = "let card of cards" >
+        <h2 id="loadingText"> {{loadingText}} </h2>
+
+
+
+        <div class="row board justify-content-center example-list" id="cards-hack" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let card of cards" cdkDrag>
             <div class="card-view">
               <ng-template #cardView></ng-template>
             </div>
