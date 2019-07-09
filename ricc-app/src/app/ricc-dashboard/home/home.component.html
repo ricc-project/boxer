@@ -1,5 +1,5 @@
 <body>
-  <div class="d-flex">  
+  <div class="d-flex">
     <ricc-navbar [theme]="'light-dark'" [isLoggedIn]="true"></ricc-navbar>
 
     <div class="container text-center">
@@ -24,6 +24,7 @@
         </div>
         <hr>
 
+        <h3> {{loadingText}} </h3>
         <div class="row board justify-content-center">
           <div *ngFor = "let card of cards" >
             <div class="card-view">

@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   cardTypes : Array<Card>;
   graphComponent : GraphComponent;
   r: Array<any>;
+  loadingText: string;
+  a: string = "ASDF"
 
 
   @ViewChildren('cardView', {read: ViewContainerRef}) viewChilren: QueryList<ViewContainerRef>;
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.requests = new Requests(this.http);    
     this.cards = []
     this.graphComponent = new GraphComponent;
+    this.loadingText = "CARREGANDO ...";
   }
 
   ngOnInit() {
@@ -62,7 +65,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         count++;
       }
 
-    }, 5000);
+      this.loadingText = "";
+    }, 6000);
   }
 
   onSubmit(f: NgForm) {
